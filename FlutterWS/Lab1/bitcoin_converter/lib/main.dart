@@ -23,11 +23,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Currency {
-  var name = "Not available", unit = "Not available", value = 0.0, type = "Not available";
-  Currency(this.name, this.unit, this.value, this.type);
-}
-
 class ConverterPage extends StatefulWidget {
   const ConverterPage({Key? key}) : super(key: key);
 
@@ -136,7 +131,7 @@ class _CurrencyGridState extends State<CurrencyGrid> {
           ),
           color: const Color.fromARGB(255, 248, 208, 89),
         ),
-                Container(
+          Container(
           padding: const EdgeInsets.all(8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -184,4 +179,9 @@ class _CurrencyGridState extends State<CurrencyGrid> {
       ],
     );
   }
+}
+
+class Currency {
+  var name = "Not available", unit = "Not available", value = 0.0, type = "Not available";
+  Currency(this.name, this.unit, this.value, this.type);
 }
