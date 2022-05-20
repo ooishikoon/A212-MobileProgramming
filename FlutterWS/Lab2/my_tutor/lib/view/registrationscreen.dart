@@ -8,8 +8,18 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  late double screenHeight, screenWidth, resWidth;
+
   @override
   Widget build(BuildContext context) {
+    screenHeight = MediaQuery.of(context).size.height;
+    screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth <= 600) {
+      resWidth = screenWidth;
+    } else {
+      resWidth = screenWidth * 0.75;
+    }
+
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
@@ -21,20 +31,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       fit: BoxFit.cover))),
           Container(
             margin: const EdgeInsets.only(top: 20),
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Card(
                   elevation: 10,
                   child: Container(
-                    padding: const EdgeInsets.fromLTRB(25, 10, 20, 25),
+                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                     child: Column(
                       children: const <Widget>[
                         Text(
-                          "Register New Account",
+                          "Create Account",
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 25,
                             fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Name',
+                              icon: const Icon(Icons.account_box),
                           ),
                         ),
                       ],
@@ -44,33 +64,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ],
             ),
           ),
-          
-          /*Padding(
-            padding: const EdgeInsets.fromLTRB(0, 50, 0, 10),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Card(
-                    elevation: 10,
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(25, 10, 20, 25),
-                      child: Column(
-                        children: const <Widget>[
-                          Text(
-                            "Register New Account",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),*/
         ],
       ),
     );
