@@ -79,12 +79,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                   const LoginScreen()));
                                     },
                                   ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text(
+                                  const SizedBox(
+                                    width: 50,
+                                  ),
+                                  const Text(
                                     "Create Account",
                                     style: TextStyle(
                                       fontSize: 20,
@@ -92,9 +90,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     ),
                                   ),
                                 ],
-                              ),
-                              const SizedBox(
-                                height: 5,
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
@@ -114,9 +109,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(width: 0.5),
                                     )),
-                              ),
-                              const SizedBox(
-                                height: 5,
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
@@ -146,9 +138,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(width: 0.5),
                                     )),
-                              ),
-                              const SizedBox(
-                                height: 5,
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
@@ -215,9 +204,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                                   BorderSide(width: 0.5),
                                             )),
                                       ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
                                       TextFormField(
                                         textInputAction: TextInputAction.done,
                                         validator: (val) =>
@@ -251,9 +237,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                               borderSide:
                                                   BorderSide(width: 0.5),
                                             )),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
                                       ),
                                       TextFormField(
                                         style: const TextStyle(),
@@ -307,7 +290,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 height: 5,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Checkbox(
                                       value: _isChecked,
@@ -316,16 +300,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                           _isChecked = value!;
                                         });
                                       }),
-                                      Flexible(
-                          child: GestureDetector(
-                            onTap: null,
-                            child: const Text('Agree with terms',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ),
-                        ),
+                                  Flexible(
+                                    child: GestureDetector(
+                                      onTap: null,
+                                      child: const Text('Agree with terms',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          )),
+                                    ),
+                                  ),
                                   ElevatedButton.icon(
                                     icon: const Icon(
                                       Icons.app_registration,
