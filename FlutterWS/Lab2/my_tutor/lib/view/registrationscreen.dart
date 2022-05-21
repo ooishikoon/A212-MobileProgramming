@@ -496,10 +496,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       //_cropImage();
+    } else {
+      print('No image selected.');
     }
   }
 
-   _cameraPicker() async {
+  _cameraPicker() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(
       source: ImageSource.camera,
@@ -509,6 +511,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       //_cropImage();
+    } else {
+      print('No image selected.');
     }
   }
 }
