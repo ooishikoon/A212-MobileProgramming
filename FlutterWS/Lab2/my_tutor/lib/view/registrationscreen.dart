@@ -374,22 +374,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
     );
   }
-}
 
-void _registerUserAccount() {
-  
-}
+  void _registerUserAccount() {
+    FocusScope.of(context).requestFocus(FocusNode());
+    String _name = _nameController.text;
+    String _email = _emailController.text;
+    String _password = _passwordController.text;
+  }
 
-String? validatePassword(String value) {
-  String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$';
-  RegExp regex = RegExp(pattern);
-  if (value.isEmpty) {
-    return 'Please enter the password';
-  } else {
-    if (!regex.hasMatch(value)) {
-      return 'Enter valid password';
+  String? validatePassword(String value) {
+    String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$';
+    RegExp regex = RegExp(pattern);
+    if (value.isEmpty) {
+      return 'Please enter the password';
     } else {
-      return null;
+      if (!regex.hasMatch(value)) {
+        return 'Enter valid password';
+      } else {
+        return null;
+      }
     }
   }
 }
