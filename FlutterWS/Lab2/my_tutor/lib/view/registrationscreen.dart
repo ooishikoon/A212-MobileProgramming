@@ -10,6 +10,7 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _passwordVisible = true;
+  bool _isChecked = false;
 
   late double screenHeight, screenWidth, resWidth;
 
@@ -306,8 +307,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 height: 5,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  Checkbox(
+                                      value: _isChecked,
+                                      onChanged: (bool? value) {
+                                        setState(() {
+                                          _isChecked = value!;
+                                        });
+                                      }),
+                                      Flexible(
+                          child: GestureDetector(
+                            onTap: null,
+                            child: const Text('Agree with terms',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ),
+                        ),
                                   ElevatedButton.icon(
                                     icon: const Icon(
                                       Icons.app_registration,
