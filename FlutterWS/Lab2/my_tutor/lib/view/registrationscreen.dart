@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../constants.dart';
 import 'loginscreen.dart';
 import 'package:ndialog/ndialog.dart';
+import 'package:http/http.dart' as http;
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -387,7 +391,39 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         title: const Text("Registering..."));
     progressDialog.show();
 
-    
+    http.post(Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/register_user.php"),
+        body: {
+          "name": _name,
+          "phoneno": _phoneno,
+          "address": _address,
+          "email": _email,
+          "password": _password
+        }).then((response) {
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200 && data['status'] == 'success') {
+        Fluttertoast.showToast(
+            msg: "Registration Success",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            fontSize: 14.0);
+        progressDialog.dismiss();
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => const LoginScreen()));
+        return;
+      } else {
+        Fluttertoast.showToast(
+            msg: "Registration Failed",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            fontSize: 14.0);
+        progressDialog.dismiss();
+        return;
+      }
+    });
   }
 
   String? validatePassword(String value) {
