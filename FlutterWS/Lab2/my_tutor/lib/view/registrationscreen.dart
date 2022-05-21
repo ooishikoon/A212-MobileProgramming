@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'loginscreen.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -11,6 +13,7 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _passwordVisible = true;
   bool _isChecked = false;
+  String eula = "";
 
   late double screenHeight, screenWidth, resWidth;
 
@@ -293,23 +296,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Checkbox(
-                                      value: _isChecked,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _isChecked = value!;
-                                        });
-                                      }),
-                                  Flexible(
-                                    child: GestureDetector(
-                                      onTap: null,
-                                      child: const Text('Agree with terms',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          )),
-                                    ),
-                                  ),
                                   ElevatedButton.icon(
                                     icon: const Icon(
                                       Icons.app_registration,
@@ -343,8 +329,55 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   void _registerAccountDialog() {
-    if (!_formKey.currentState!.validate()) {}
+    if (!_formKey.currentState!.validate()) {
+      Fluttertoast.showToast(
+          msg: "Please fill in all the fields.",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          fontSize: 14.0);
+      return;
+    }
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          title: const Text(
+            "Register new account?",
+            style: TextStyle(),
+          ),
+          content: const Text("Are you sure?", style: TextStyle()),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                "Yes",
+                style: TextStyle(),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _registerUserAccount();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                "No",
+                style: TextStyle(),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
+}
+
+void _registerUserAccount() {
+  
 }
 
 String? validatePassword(String value) {
