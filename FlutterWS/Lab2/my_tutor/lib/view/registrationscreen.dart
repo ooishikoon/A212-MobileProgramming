@@ -72,13 +72,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 ),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
                                 validator: (val) =>
                                     val!.isEmpty || (val.length < 3)
-                                        ? "name must be longer than 3"
+                                        ? "Name must be longer than 3"
                                         : null,
                                 onFieldSubmitted: (v) {
                                   FocusScope.of(context).requestFocus(focus);
@@ -94,7 +94,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     )),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
@@ -126,7 +126,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     )),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
@@ -174,7 +174,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                         validator: (val) => val!.isEmpty ||
                                                 !val.contains("@") ||
                                                 !val.contains(".")
-                                            ? "enter a valid email"
+                                            ? "Please enter a valid email"
                                             : null,
                                         focusNode: focus3,
                                         onFieldSubmitted: (v) {
@@ -239,8 +239,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                         validator: (val) {
                                           validatePassword(val.toString());
                                           if (val != _passwordController.text) {
-                                            return "password do not match";
-                                          } else {
+                                            return "Password do not match";
+                                          } if (val!.isEmpty) {
+                                            return "Please enter the password";
+                                          }
+                                          else {
                                             return null;
                                           }
                                         },
@@ -291,14 +294,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     ),
                                     label: const Text('Register'),
                                     style: ElevatedButton.styleFrom(
-                                      //primary: Colors.amber,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(50.0),
                                       ),
                                       minimumSize: const Size(100, 40),
                                     ),
-                                    onPressed: null,
+                                    onPressed: _registerAccountDialog,
                                   ),
                                 ],
                               ),
@@ -316,13 +318,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     ));
   }
+
+  void _registerAccountDialog() {
+    if (!_formKey.currentState!.validate()) {
+
+    }
+  }
 }
 
 String? validatePassword(String value) {
   String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$';
   RegExp regex = RegExp(pattern);
   if (value.isEmpty) {
-    return 'Please enter password';
+    return 'Please enter the password';
   } else {
     if (!regex.hasMatch(value)) {
       return 'Enter valid password';
