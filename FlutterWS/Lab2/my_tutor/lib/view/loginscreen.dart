@@ -257,7 +257,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 timeInSecForIosWeb: 1,
                 fontSize: 16.0);
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (content) => MainScreen()));
+                context, MaterialPageRoute(builder: (content) => const MainScreen()));
           } else {
             Fluttertoast.showToast(
                 msg: "Failed",
