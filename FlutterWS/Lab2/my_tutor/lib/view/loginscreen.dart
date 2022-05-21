@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:my_tutor/model/user.dart';
 import 'package:my_tutor/view/registrationscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../constants.dart';
 import 'mainscreen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -246,18 +249,19 @@ class _LoginScreenState extends State<LoginScreen> {
       String _password = _passwordController.text;
       if (_email.isNotEmpty && _password.isNotEmpty) {
         http.post(
-            Uri.parse("http://10.31.83.198/mytutor/mobile/php/login_user.php"),
+            Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/login_user.php"),
             body: {"email": _email, "password": _password}).then((response) {
-          print(response.body);
-          if (response.body == 'success') {
+          var data = jsonDecode(response.body);
+          if (response.statusCode == 200 && data['status'] == 'success') {
+            User user = User.fromJson(data['data']);
             Fluttertoast.showToast(
                 msg: "Success",
                 toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.BOTTOM,
                 timeInSecForIosWeb: 1,
                 fontSize: 16.0);
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (content) => const MainScreen()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (content) => const MainScreen()));
           } else {
             Fluttertoast.showToast(
                 msg: "Failed",
