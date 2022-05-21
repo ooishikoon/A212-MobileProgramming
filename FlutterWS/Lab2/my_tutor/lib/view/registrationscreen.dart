@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'loginscreen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -64,12 +65,32 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           padding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
                           child: Column(
                             children: <Widget>[
-                              const Text(
-                                "Create Account",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.keyboard_arrow_left),
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (content) =>
+                                                  const LoginScreen()));
+                                    },
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Text(
+                                    "Create Account",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
                               ),
                               const SizedBox(
                                 height: 5,
@@ -149,7 +170,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     )),
                               ),
                               const SizedBox(
-                                height: 20,
+                                height: 10,
                               ),
                               Card(
                                 elevation: 10,
@@ -166,7 +187,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   padding:
-                                      const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                                      const EdgeInsets.fromLTRB(20, 0, 20, 10),
                                   child: Column(
                                     children: <Widget>[
                                       TextFormField(
@@ -240,10 +261,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                           validatePassword(val.toString());
                                           if (val != _passwordController.text) {
                                             return "Password do not match";
-                                          } if (val!.isEmpty) {
-                                            return "Please enter the password";
                                           }
-                                          else {
+                                          if (val!.isEmpty) {
+                                            return "Please enter the password";
+                                          } else {
                                             return null;
                                           }
                                         },
@@ -282,7 +303,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 ),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -320,9 +341,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   void _registerAccountDialog() {
-    if (!_formKey.currentState!.validate()) {
-
-    }
+    if (!_formKey.currentState!.validate()) {}
   }
 }
 
