@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'loginscreen.dart';
+import 'package:ndialog/ndialog.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _passwordVisible = true;
-  bool _isChecked = false;
   String eula = "";
 
   late double screenHeight, screenWidth, resWidth;
@@ -378,8 +377,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   void _registerUserAccount() {
     FocusScope.of(context).requestFocus(FocusNode());
     String _name = _nameController.text;
+    String _phoneno = _phonenoController.text;;
+    String _address = _addressController.text;
     String _email = _emailController.text;
     String _password = _passwordController.text;
+    FocusScope.of(context).unfocus();
+    ProgressDialog progressDialog = ProgressDialog(context,
+        message: const Text("Registration in progress.."),
+        title: const Text("Registering..."));
+    progressDialog.show();
+
+    
   }
 
   String? validatePassword(String value) {
