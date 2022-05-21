@@ -1,5 +1,7 @@
 import 'dart:convert';
-
+import 'dart:io';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../constants.dart';
@@ -17,6 +19,8 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _passwordVisible = true;
   String eula = "";
+  String pathAsset = 'assets/images/camera.png';
+  var _image;
 
   late double screenHeight, screenWidth, resWidth;
 
@@ -69,7 +73,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       child: Form(
                         key: _formKey,
                         child: Container(
-                          padding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                           child: Column(
                             children: <Widget>[
                               Row(
@@ -91,11 +95,23 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   const Text(
                                     "Create Account",
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ],
+                              ),
+                              SizedBox(
+                                height: 110,
+                                child: GestureDetector(
+                                    onTap: () => {_takePictureDialog()},
+                                    child: SizedBox(
+                                        child: _image == null
+                                            ? Image.asset(pathAsset)
+                                            : Image.file(
+                                                _image,
+                                                fit: BoxFit.cover,
+                                              ))),
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
@@ -381,7 +397,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   void _registerUserAccount() {
     FocusScope.of(context).requestFocus(FocusNode());
     String _name = _nameController.text;
-    String _phoneno = _phonenoController.text;;
+    String _phoneno = _phonenoController.text;
     String _address = _addressController.text;
     String _email = _emailController.text;
     String _password = _passwordController.text;
@@ -391,7 +407,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         title: const Text("Registering..."));
     progressDialog.show();
 
-    http.post(Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/register_user.php"),
+    http.post(
+        Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/register_user.php"),
         body: {
           "name": _name,
           "phoneno": _phoneno,
@@ -437,6 +454,62 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       } else {
         return null;
       }
+    }
+  }
+
+  _takePictureDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+            title: const Text(
+              "Select from",
+            ),
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextButton.icon(
+                    onPressed: () => {
+                          Navigator.of(context).pop(),
+                          _galleryPicker(),
+                        },
+                    icon: const Icon(Icons.browse_gallery),
+                    label: const Text("Gallery")),
+                TextButton.icon(
+                    onPressed: () =>
+                        {Navigator.of(context).pop(), _cameraPicker()},
+                    icon: const Icon(Icons.camera_alt),
+                    label: const Text("Camera")),
+              ],
+            ));
+      },
+    );
+  }
+
+  _galleryPicker() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(
+      source: ImageSource.gallery,
+      maxHeight: 800,
+      maxWidth: 800,
+    );
+    if (pickedFile != null) {
+      _image = File(pickedFile.path);
+      //_cropImage();
+    }
+  }
+
+   _cameraPicker() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(
+      source: ImageSource.camera,
+      maxHeight: 800,
+      maxWidth: 800,
+    );
+    if (pickedFile != null) {
+      _image = File(pickedFile.path);
+      //_cropImage();
     }
   }
 }
