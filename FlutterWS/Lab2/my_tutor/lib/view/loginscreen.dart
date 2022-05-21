@@ -5,8 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:my_tutor/model/user.dart';
 import 'package:my_tutor/view/registrationscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../constants.dart';
+import 'package:my_tutor/constants.dart';
 import 'mainscreen.dart';
+import '../model/user.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -260,8 +261,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 gravity: ToastGravity.BOTTOM,
                 timeInSecForIosWeb: 1,
                 fontSize: 16.0);
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (content) => const MainScreen()));
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (content) => MainScreen(
+                      user: user,
+                    )));
           } else {
             Fluttertoast.showToast(
                 msg: "Failed",
