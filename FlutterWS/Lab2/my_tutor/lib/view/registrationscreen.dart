@@ -57,10 +57,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         children: [
           Container(
               decoration: const BoxDecoration(
-            shape: BoxShape.circle,
             image: DecorationImage(
                 image: AssetImage('assets/images/registration.png'),
                 fit: BoxFit.fill),
+                shape: BoxShape.circle,
           )),
           Form(
             child: SingleChildScrollView(
@@ -516,15 +516,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   Future<void> _cropImage() async {
     File? croppedFile = await ImageCropper().cropImage(
-        sourcePath: _image!.path,
         cropStyle: CropStyle.circle,
-        /*aspectRatioPresets: [
-          CropAspectRatioPreset.square,
-          CropAspectRatioPreset.ratio3x2,
-          CropAspectRatioPreset.original,
-          CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio16x9
-        ],*/
+        sourcePath: _image!.path,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
         androidUiSettings: const AndroidUiSettings(
             toolbarTitle: 'Cropper',
             toolbarColor: Colors.amber,
