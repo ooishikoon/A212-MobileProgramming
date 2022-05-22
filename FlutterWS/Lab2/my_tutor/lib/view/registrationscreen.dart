@@ -60,7 +60,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             image: DecorationImage(
                 image: AssetImage('assets/images/registration.png'),
                 fit: BoxFit.fill),
-                shape: BoxShape.circle,
           )),
           Form(
             child: SingleChildScrollView(
@@ -105,15 +104,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               ),
                               SizedBox(
                                 height: 110,
+                                //shape: BoxShape.circle,
                                 child: GestureDetector(
                                     onTap: () => {_takePictureDialog()},
                                     child: SizedBox(
-                                        child: _image == null
-                                            ? Image.asset(pathAsset)
-                                            : Image.file(
-                                                _image,
-                                                fit: BoxFit.cover,
-                                              ))),
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                            child: _image == null
+                                                ? Image.asset(pathAsset)
+                                                : Image.file(
+                                                    _image,
+                                                    fit: BoxFit.fill,
+                                                  )))),
                               ),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
