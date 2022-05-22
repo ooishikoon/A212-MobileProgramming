@@ -62,7 +62,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 255, 255, 255),
                     )),
                 CircularProgressIndicator(),
                 Text("Version 1.0",
