@@ -18,7 +18,6 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _passwordVisible = true;
-  String eula = "";
   String pathAsset = 'assets/images/camera.png';
   var _image;
 
