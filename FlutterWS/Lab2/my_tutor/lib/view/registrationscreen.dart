@@ -57,9 +57,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         children: [
           Container(
               decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/registration.png'),
-                      fit: BoxFit.cover))),
+            shape: BoxShape.circle,
+            image: DecorationImage(
+                image: AssetImage('assets/images/registration.png'),
+                fit: BoxFit.fill),
+          )),
           Form(
             child: SingleChildScrollView(
               child: Container(
@@ -495,9 +497,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
     if (pickedFile != null) {
       _image = File(pickedFile.path);
-      //_cropImage();
-    } else {
-      print('No image selected.');
+      _cropImage();
     }
   }
 
@@ -510,9 +510,33 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
     if (pickedFile != null) {
       _image = File(pickedFile.path);
-      //_cropImage();
-    } else {
-      print('No image selected.');
+      _cropImage();
+    }
+  }
+
+  Future<void> _cropImage() async {
+    File? croppedFile = await ImageCropper().cropImage(
+        sourcePath: _image!.path,
+        cropStyle: CropStyle.circle,
+        /*aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],*/
+        androidUiSettings: const AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: Colors.amber,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: false),
+        iosUiSettings: const IOSUiSettings(
+          minimumAspectRatio: 1.0,
+        ));
+    if (croppedFile != null) {
+      _image = croppedFile;
+      setState(() {});
     }
   }
 }
