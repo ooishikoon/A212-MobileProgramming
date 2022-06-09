@@ -177,30 +177,40 @@ class _TutorsScreenState extends State<TutorsScreen> {
                   child: Text("Tutors", style: TextStyle(fontSize: 22)),
                 ),
                 Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: ListView.builder(
                         itemCount: 10,
                         itemBuilder: (context, position) {
                           List.generate(tutorList.length, (index) {});
-                          return const Card(
-                            child: Padding(
-                              padding: EdgeInsets.all(20.0),
-                              // child: Text(
-                              //   position.toString(),
-                              //   style: TextStyle(fontSize: 22.0),
-                              // ),
+                          return Card(
+                            clipBehavior: Clip.antiAlias,
+                            shadowColor: Colors.amber,
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(255, 247, 242, 199),
+                                    Color.fromARGB(255, 243, 204, 86)
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                              ),
+                              child: const SizedBox(
+                                height: 100,
+
+                              ),
                             ),
                           );
-                        }))
-                // Expanded(
-                //     child: GridView.count(
-                //         crossAxisCount: 2,
-                //         childAspectRatio: (1 / 1),
-                //         children: List.generate(
-                //           tutorList.length,
-                //           (index) {
-                //             return Card();
-                //           },
-                //         )))
+                        }),
+                  ),
+                ),
               ]));
   }
 
