@@ -173,20 +173,34 @@ class _TutorsScreenState extends State<TutorsScreen> {
                     )))
             : Column(children: [
                 const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                  child:
-                      Text("Tutors", style: TextStyle(fontSize: 18)),
+                  padding: EdgeInsets.fromLTRB(0, 50, 0, 5),
+                  child: Text("Tutors", style: TextStyle(fontSize: 22)),
                 ),
                 Expanded(
-                    child: GridView.count(
-                        crossAxisCount: 2,
-                        childAspectRatio: (1 / 1),
-                        children: List.generate(
-                          tutorList.length,
-                          (index) {
-                            return Card();
-                          },
-                        )))
+                    child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, position) {
+                          List.generate(tutorList.length, (index) {});
+                          return const Card(
+                            child: Padding(
+                              padding: EdgeInsets.all(20.0),
+                              // child: Text(
+                              //   position.toString(),
+                              //   style: TextStyle(fontSize: 22.0),
+                              // ),
+                            ),
+                          );
+                        }))
+                // Expanded(
+                //     child: GridView.count(
+                //         crossAxisCount: 2,
+                //         childAspectRatio: (1 / 1),
+                //         children: List.generate(
+                //           tutorList.length,
+                //           (index) {
+                //             return Card();
+                //           },
+                //         )))
               ]));
   }
 
