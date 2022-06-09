@@ -5,6 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_tutor/constants.dart';
 
+import '../model/tutors.dart';
+
 class TutorsScreen extends StatefulWidget {
   const TutorsScreen({Key? key}) : super(key: key);
 
@@ -13,6 +15,8 @@ class TutorsScreen extends StatefulWidget {
 }
 
 class _TutorsScreenState extends State<TutorsScreen> {
+  List<Tutors> tutorList = <Tutors>[];
+
   @override
   void initState() {
     super.initState();
@@ -168,10 +172,16 @@ class _TutorsScreenState extends State<TutorsScreen> {
     http.post(
         Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/load_tutors.php"),
         body: {}).then((response) {
-      var data = jsonDecode(response.body);
-      if (response.statusCode == 200 && data['status'] == 'success') {
-        print(data);
-      } 
+      var jsondata = jsonDecode(response.body);
+      if (response.statusCode == 200 && jsondata['status'] == 'success') {
+        var extractdata = jsondata['data'];
+        if (extractdata['products'] != null) {
+          tutorList = <Tutors>[];
+          extractdata['products'].forEach((v) {
+            tutorList.add(Tutors.fromJson(v));
+          });
+        }
+      }
     });
   }
 }
