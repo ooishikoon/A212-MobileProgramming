@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_tutor/model/user.dart';
+import 'package:my_tutor/view/tutorsscreen.dart';
 
 class MainScreen extends StatefulWidget {
   final User user;
@@ -71,11 +72,11 @@ class _MainScreenState extends State<MainScreen> {
                           child: InkWell(
                             splashColor: Colors.amber,
                             onTap: () {
-                              // Navigator.pushReplacement(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (BuildContext context) =>
-                              //             const CourseScreen()));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const TutorsScreen()));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
