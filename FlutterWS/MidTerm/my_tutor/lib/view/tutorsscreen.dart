@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -174,43 +174,81 @@ class _TutorsScreenState extends State<TutorsScreen> {
             : Column(children: [
                 const Padding(
                   padding: EdgeInsets.fromLTRB(0, 50, 0, 5),
-                  child: Text("Tutors", style: TextStyle(fontSize: 22)),
+                  child: Text("Tutors",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (context, position) {
-                          List.generate(tutorList.length, (index) {});
-                          return Card(
-                            clipBehavior: Clip.antiAlias,
-                            shadowColor: Colors.amber,
-                            elevation: 8,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Color.fromARGB(255, 247, 242, 199),
-                                    Color.fromARGB(255, 243, 204, 86)
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ),
+                    child: GridView.count(
+                        crossAxisCount: 2,
+                        childAspectRatio: (1 / 1),
+                        children: List.generate(tutorList.length, (index) {
+                          return InkWell(
+                            splashColor: Colors.amber,
+                            //onTap: () => {_loadProductDetails(index)},
+                            child: Card(
+                              clipBehavior: Clip.antiAlias,
+                              shadowColor: Colors.amber,
+                              elevation: 8,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
                               ),
-                              child: const SizedBox(
-                                height: 100,
-
-                              ),
+                              child: Container(
+                                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color.fromARGB(255, 247, 242, 199),
+                                        Color.fromARGB(255, 243, 204, 86)
+                                      ],
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Flexible(
+                                        flex: 7,
+                                        child: CachedNetworkImage(
+                                          imageUrl: CONSTANTS.server +
+                                              "/mytutor/mobile/assets/tutors/" +
+                                              tutorList[index]
+                                                  .tutorId
+                                                  .toString() +
+                                              '.jpg',
+                                          fit: BoxFit.cover,
+                                          width: resWidth,
+                                          placeholder: (context, url) =>
+                                              const LinearProgressIndicator(),
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(Icons.error),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Flexible(
+                                        flex: 3,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              tutorList[index]
+                                                  .tutorName
+                                                  .toString(),
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20),
+                                    ],
+                                  )),
                             ),
                           );
-                        }),
-                  ),
-                ),
+                        }))),
               ]));
   }
 
