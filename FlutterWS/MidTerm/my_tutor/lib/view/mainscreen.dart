@@ -6,6 +6,7 @@ import 'package:my_tutor/model/courses.dart';
 import 'package:my_tutor/model/user.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
 import '../constants.dart';
+User user = User();
 
 class MainScreen extends StatefulWidget {
   final User user;
@@ -58,13 +59,13 @@ class _MainScreenState extends State<MainScreen> {
                             child: InkWell(
                               splashColor: Colors.amber,
                               onTap: () {
-                                // Navigator.pushReplacement(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (BuildContext context) =>
-                                //             MainScreen(
-                                //               user: user,
-                                //             )));
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            MainScreen(
+                                              user: user,
+                                            )));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -325,7 +326,8 @@ class _MainScreenState extends State<MainScreen> {
                     "\nSubject Price: ",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text("RM " + double.parse(courseList[index].subjectPrice.toString())
+                  Text("RM " +
+                      double.parse(courseList[index].subjectPrice.toString())
                           .toStringAsFixed(2)),
                   const Text(
                     "\nSubject Session:",

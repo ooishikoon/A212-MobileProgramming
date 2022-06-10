@@ -5,8 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:my_tutor/constants.dart';
 import '../model/tutors.dart';
+import '../model/user.dart';
 import 'mainscreen.dart';
-import 'package:my_tutor/model/user.dart';
+User user = User();
 
 class TutorsScreen extends StatefulWidget {
   const TutorsScreen({Key? key}) : super(key: key);
@@ -30,8 +31,6 @@ class _TutorsScreenState extends State<TutorsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    User user;
-
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
     if (screenWidth <= 600) {
@@ -40,8 +39,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
       resWidth = screenWidth * 0.75;
     }
 
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
             bottomNavigationBar: BottomAppBar(
                 color: Colors.amber,
                 child: SizedBox(
@@ -59,12 +57,12 @@ class _TutorsScreenState extends State<TutorsScreen> {
                                 child: InkWell(
                                   splashColor: Colors.amber,
                                   onTap: () {
-                                    // Navigator.pushReplacement(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (content) => MainScreen(
-                                    //               user: user,
-                                    //             )));
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (content) => MainScreen(
+                                                  user: user,
+                                                )));
                                   },
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -257,7 +255,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                                 ),
                               );
                             }))),
-                  ])));
+                  ]));
   }
 
   void _loadTutors() {
@@ -303,7 +301,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                       const LinearProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Text(
                   tutorList[index].tutorName.toString(),
                   style: const TextStyle(
