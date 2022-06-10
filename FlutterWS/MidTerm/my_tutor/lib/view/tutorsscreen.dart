@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:my_tutor/constants.dart';
 import '../model/tutors.dart';
+import 'mainscreen.dart';
+import 'package:my_tutor/model/user.dart';
 
 class TutorsScreen extends StatefulWidget {
   const TutorsScreen({Key? key}) : super(key: key);
@@ -29,6 +30,8 @@ class _TutorsScreenState extends State<TutorsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    User user;
+
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
     if (screenWidth <= 600) {
@@ -187,7 +190,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                             children: List.generate(tutorList.length, (index) {
                               return InkWell(
                                 splashColor: Colors.amber,
-                                onTap: () => {_loadProductDetails(index)},
+                                onTap: () => {_loadTutorsDetails(index)},
                                 child: Card(
                                   clipBehavior: Clip.antiAlias,
                                   shadowColor: Colors.amber,
@@ -275,7 +278,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
     });
   }
 
-  _loadProductDetails(int index) {
+  _loadTutorsDetails(int index) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
