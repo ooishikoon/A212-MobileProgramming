@@ -287,7 +287,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(20.0))),
             title: const Text(
               "Tutor Details",
-              style: TextStyle(),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             content: SingleChildScrollView(
                 child: Column(

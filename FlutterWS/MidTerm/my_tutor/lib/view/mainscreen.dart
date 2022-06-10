@@ -285,7 +285,7 @@ class _MainScreenState extends State<MainScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(20.0))),
             title: const Text(
               "Courses Details",
-              style: TextStyle(),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             content: SingleChildScrollView(
                 child: Column(
@@ -301,7 +301,7 @@ class _MainScreenState extends State<MainScreen> {
                       const LinearProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Text(
                   courseList[index].subjectName.toString(),
                   style: const TextStyle(
