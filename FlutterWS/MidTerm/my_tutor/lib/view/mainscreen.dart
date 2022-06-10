@@ -22,6 +22,8 @@ class _MainScreenState extends State<MainScreen> {
   List<Courses> courseList = <Courses>[];
   String titlecenter = "Loading...";
 
+  late double screenHeight, screenWidth, resWidth;
+
   @override
   void initState() {
     super.initState();
@@ -30,8 +32,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    late double screenHeight, screenWidth, resWidth;
-
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
     if (screenWidth <= 600) {
@@ -276,6 +276,71 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  _loadCoursesDetails(int index) {}
-
+  _loadCoursesDetails(int index) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+            title: const Text(
+              "Courses Details",
+              style: TextStyle(),
+            ),
+            content: SingleChildScrollView(
+                child: Column(
+              children: [
+                CachedNetworkImage(
+                  imageUrl: CONSTANTS.server +
+                      "/mytutor/mobile/assets/courses/" +
+                      courseList[index].tutorId.toString() +
+                      '.png',
+                  fit: BoxFit.cover,
+                  width: resWidth,
+                  placeholder: (context, url) =>
+                      const LinearProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  courseList[index].subjectName.toString(),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  const Text(
+                    "Subject ID: ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    courseList[index].subjectId.toString(),
+                  ),
+                  const Text(
+                    "\nSubject Description:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(courseList[index].subjectDescription.toString()),
+                  const Text(
+                    "\nSubject Price: ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text("RM " + double.parse(courseList[index].subjectPrice.toString())
+                          .toStringAsFixed(2)),
+                  const Text(
+                    "\nSubject Session:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(courseList[index].subjectSessions.toString()),
+                  const Text(
+                    "\nSubject Rating:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(courseList[index].subjectRating.toString()),
+                ]),
+              ],
+            )),
+          );
+        });
+  }
 }
