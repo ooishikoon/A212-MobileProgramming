@@ -6,6 +6,7 @@ import 'package:my_tutor/model/courses.dart';
 import 'package:my_tutor/model/user.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
 import '../constants.dart';
+
 User user = User();
 
 class MainScreen extends StatefulWidget {
@@ -22,13 +23,14 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Courses> courseList = <Courses>[];
   String titlecenter = "Loading...";
-
+  var numofpage, curpage = 1;
+  var color;
   late double screenHeight, screenWidth, resWidth;
 
   @override
   void initState() {
     super.initState();
-    _loadCourses();
+    _loadCourses(1);
   }
 
   @override
@@ -256,21 +258,53 @@ class _MainScreenState extends State<MainScreen> {
                             ),
                           );
                         }))),
+                SizedBox(
+                  height: 30,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: numofpage,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      if ((curpage - 1) == index) {
+                        color = Colors.amber;
+                      } else {
+                        color = Colors.black;
+                      }
+                      return SizedBox(
+                        width: 40,
+                        child: TextButton(
+                            onPressed: () => {_loadCourses(index + 1)},
+                            child: Text(
+                              (index + 1).toString(),
+                              style: TextStyle(color: color),
+                            )),
+                      );
+                    },
+                  ),
+                ),
               ]));
   }
 
-  void _loadCourses() {
+  void _loadCourses(int pageno) {
+    curpage = pageno;
+    numofpage ?? 1;
     http.post(
         Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/load_courses.php"),
-        body: {}).then((response) {
+        body: {'pageno': pageno.toString()}).then((response) {
       var jsondata = jsonDecode(response.body);
+      print(jsondata);
       if (response.statusCode == 200 && jsondata['status'] == 'success') {
         var extractdata = jsondata['data'];
+        numofpage = int.parse(jsondata['numofpage']);
+
         if (extractdata['courses'] != null) {
           courseList = <Courses>[];
           extractdata['courses'].forEach((v) {
             courseList.add(Courses.fromJson(v));
           });
+          setState(() {});
+        } else {
+          titlecenter = "No Courses Available";
           setState(() {});
         }
       }
