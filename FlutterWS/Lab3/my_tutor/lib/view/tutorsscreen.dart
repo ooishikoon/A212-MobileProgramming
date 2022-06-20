@@ -314,7 +314,10 @@ class _TutorsScreenState extends State<TutorsScreen> {
     numofpage ?? 1;
     http.post(
         Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/load_tutors.php"),
-        body: {'pageno': pageno.toString(),'search': _search,}).then((response) {
+        body: {
+          'pageno': pageno.toString(),
+          'search': _search,
+        }).then((response) {
       var jsondata = jsonDecode(response.body);
       print(jsondata);
       if (response.statusCode == 200 && jsondata['status'] == 'success') {
@@ -376,16 +379,6 @@ class _TutorsScreenState extends State<TutorsScreen> {
                     tutorList[index].tutorId.toString(),
                   ),
                   const Text(
-                    "\nTutor Email:",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(tutorList[index].tutorEmail.toString()),
-                  const Text(
-                    "\nTutor Phone: ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(tutorList[index].tutorPhone.toString()),
-                  const Text(
                     "\nTutor Name:",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -395,6 +388,21 @@ class _TutorsScreenState extends State<TutorsScreen> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(tutorList[index].tutorDescription.toString()),
+                  const Text(
+                    "\nSubject List:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(tutorList[index].subjectName.toString()),
+                  const Text(
+                    "\nTutor Email:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(tutorList[index].tutorEmail.toString()),
+                  const Text(
+                    "\nTutor Phone: ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(tutorList[index].tutorPhone.toString()),
                   const Text(
                     "\nTutor Register Date:",
                     style: TextStyle(fontWeight: FontWeight.bold),
