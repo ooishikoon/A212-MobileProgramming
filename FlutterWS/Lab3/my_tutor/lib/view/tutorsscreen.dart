@@ -42,244 +42,252 @@ class _TutorsScreenState extends State<TutorsScreen> {
     }
 
     return Scaffold(
-        bottomNavigationBar: BottomAppBar(
-            color: Colors.amber,
-            child: SizedBox(
-              height: 55,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(
-                      flex: 1,
-                      child: SizedBox.fromSize(
-                        size: const Size(45, 45),
-                        child: ClipOval(
-                          child: Material(
-                            color: Colors.amber,
-                            child: InkWell(
-                              splashColor: Colors.amber,
-                              onTap: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (content) => MainScreen(
-                                              user: user,
-                                            )));
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const <Widget>[
-                                  Icon(Icons.menu_book),
-                                  Text("Courses"),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: SizedBox.fromSize(
-                        size: const Size(45, 45),
-                        child: ClipOval(
-                          child: Material(
-                            color: Colors.amber,
-                            child: InkWell(
-                              splashColor: Colors.amber,
-                              onTap: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            const TutorsScreen()));
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const <Widget>[
-                                  Icon(Icons.person),
-                                  Text("Tutors"),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: SizedBox.fromSize(
-                        size: const Size(45, 45),
-                        child: ClipOval(
-                          child: Material(
-                            color: Colors.amber,
-                            child: InkWell(
-                              splashColor: Colors.amber,
-                              onTap: () {},
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const <Widget>[
-                                  Icon(Icons.subscriptions),
-                                  Text("Subscribe"),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: SizedBox.fromSize(
-                        size: const Size(45, 45),
-                        child: ClipOval(
-                          child: Material(
-                            color: Colors.amber,
-                            child: InkWell(
-                              splashColor: Colors.amber,
-                              onTap: () {},
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const <Widget>[
-                                  Icon(Icons.favorite),
-                                  Text("Favourite"),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: SizedBox.fromSize(
-                        size: const Size(45, 45),
-                        child: ClipOval(
-                          child: Material(
-                            color: Colors.amber,
-                            child: InkWell(
-                              splashColor: Colors.amber,
-                              onTap: () {},
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const <Widget>[
-                                  Icon(Icons.category),
-                                  Text("Profile"),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      )),
-                ],
-              ),
-            )),
-        body: tutorList.isEmpty
-            ? Center(
-                child: Text(titlecenter,
-                    style: const TextStyle(
-                      fontSize: 22,
-                    )))
-            : Column(children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 50, 0, 5),
-                  child: Text("Tutors",
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-                ),
+      bottomNavigationBar: BottomAppBar(
+          color: Colors.amber,
+          child: SizedBox(
+            height: 55,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
                 Expanded(
-                    child: GridView.count(
-                        crossAxisCount: 2,
-                        childAspectRatio: (1 / 1),
-                        children: List.generate(tutorList.length, (index) {
-                          return InkWell(
+                    flex: 1,
+                    child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: ClipOval(
+                        child: Material(
+                          color: Colors.amber,
+                          child: InkWell(
                             splashColor: Colors.amber,
-                            onTap: () => {_loadTutorsDetails(index)},
-                            child: Card(
-                              clipBehavior: Clip.antiAlias,
-                              shadowColor: Colors.amber,
-                              elevation: 8,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                                  decoration: const BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color.fromARGB(255, 247, 242, 199),
-                                        Color.fromARGB(255, 243, 204, 86)
-                                      ],
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Flexible(
-                                        flex: 7,
-                                        child: CachedNetworkImage(
-                                          imageUrl: CONSTANTS.server +
-                                              "/mytutor/mobile/assets/tutors/" +
-                                              tutorList[index]
-                                                  .tutorId
-                                                  .toString() +
-                                              '.jpg',
-                                          fit: BoxFit.cover,
-                                          width: resWidth,
-                                          placeholder: (context, url) =>
-                                              const LinearProgressIndicator(),
-                                          errorWidget: (context, url, error) =>
-                                              const Icon(Icons.error),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Flexible(
-                                        flex: 3,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              tutorList[index]
-                                                  .tutorName
-                                                  .toString(),
-                                              textAlign: TextAlign.center,
-                                              style: const TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(height: 20),
-                                    ],
-                                  )),
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (content) => MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.menu_book),
+                                Text("Courses"),
+                              ],
                             ),
-                          );
-                        }))),
-                SizedBox(
-                  height: 30,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: numofpage,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      if ((curpage - 1) == index) {
-                        color = Colors.amber;
-                      } else {
-                        color = Colors.black;
-                      }
-                      return SizedBox(
-                        width: 40,
-                        child: TextButton(
-                            onPressed: () => {_loadTutors(index + 1)},
-                            child: Text(
-                              (index + 1).toString(),
-                              style: TextStyle(color: color),
-                            )),
-                      );
-                    },
+                          ),
+                        ),
+                      ),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: ClipOval(
+                        child: Material(
+                          color: Colors.amber,
+                          child: InkWell(
+                            splashColor: Colors.amber,
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const TutorsScreen()));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.person),
+                                Text("Tutors"),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: ClipOval(
+                        child: Material(
+                          color: Colors.amber,
+                          child: InkWell(
+                            splashColor: Colors.amber,
+                            onTap: () {},
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.subscriptions),
+                                Text("Subscribe"),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: ClipOval(
+                        child: Material(
+                          color: Colors.amber,
+                          child: InkWell(
+                            splashColor: Colors.amber,
+                            onTap: () {},
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.favorite),
+                                Text("Favourite"),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: ClipOval(
+                        child: Material(
+                          color: Colors.amber,
+                          child: InkWell(
+                            splashColor: Colors.amber,
+                            onTap: () {},
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.category),
+                                Text("Profile"),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    )),
+              ],
+            ),
+          )),
+      body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/background.png'),
+                  fit: BoxFit.cover)),
+          child: tutorList.isEmpty
+              ? Center(
+                  child: Text(titlecenter,
+                      style: const TextStyle(
+                        fontSize: 22,
+                      )))
+              : Column(children: [
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 50, 0, 5),
+                    child: Text("Tutors",
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold)),
                   ),
-                ),
-              ]));
+                  Expanded(
+                      child: GridView.count(
+                          crossAxisCount: 2,
+                          childAspectRatio: (1 / 1),
+                          children: List.generate(tutorList.length, (index) {
+                            return InkWell(
+                              splashColor: Colors.amber,
+                              onTap: () => {_loadTutorsDetails(index)},
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                shadowColor: Colors.amber,
+                                elevation: 8,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                child: Container(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 10, 10, 0),
+                                    decoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color.fromARGB(255, 247, 242, 199),
+                                          Color.fromARGB(255, 243, 204, 86)
+                                        ],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Flexible(
+                                          flex: 7,
+                                          child: CachedNetworkImage(
+                                            imageUrl: CONSTANTS.server +
+                                                "/mytutor/mobile/assets/tutors/" +
+                                                tutorList[index]
+                                                    .tutorId
+                                                    .toString() +
+                                                '.jpg',
+                                            fit: BoxFit.cover,
+                                            width: resWidth,
+                                            placeholder: (context, url) =>
+                                                const LinearProgressIndicator(),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(Icons.error),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Flexible(
+                                          flex: 3,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                tutorList[index]
+                                                    .tutorName
+                                                    .toString(),
+                                                textAlign: TextAlign.center,
+                                                style: const TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(height: 20),
+                                      ],
+                                    )),
+                              ),
+                            );
+                          }))),
+                  SizedBox(
+                    height: 30,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: numofpage,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        if ((curpage - 1) == index) {
+                          color = Colors.amber;
+                        } else {
+                          color = Colors.black;
+                        }
+                        return SizedBox(
+                          width: 40,
+                          child: TextButton(
+                              onPressed: () => {_loadTutors(index + 1)},
+                              child: Text(
+                                (index + 1).toString(),
+                                style: TextStyle(color: color),
+                              )),
+                        );
+                      },
+                    ),
+                  ),
+                ])),
+    );
   }
 
   void _loadTutors(int pageno) {
