@@ -199,7 +199,10 @@ class _MainScreenState extends State<MainScreen> {
                         Container(
                             alignment: Alignment.centerRight,
                             child: IconButton(
-                              icon: const Icon(Icons.search, size: 30,),
+                              icon: const Icon(
+                                Icons.search,
+                                size: 30,
+                              ),
                               onPressed: () {
                                 _loadSearchDialog();
                               },
@@ -415,11 +418,11 @@ class _MainScreenState extends State<MainScreen> {
             builder: (context, StateSetter setState) {
               return AlertDialog(
                 title: const Text(
-                  "Search ",
+                  "Search Courses",
                 ),
                 content: SingleChildScrollView(
                   child: SizedBox(
-                    height: screenHeight / 3,
+                    height: screenHeight / 5,
                     child: Column(
                       children: [
                         TextField(
@@ -429,15 +432,7 @@ class _MainScreenState extends State<MainScreen> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0))),
                         ),
-                        const SizedBox(height: 5),
-                        Container(
-                          height: 60,
-                          padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5.0))),
-                        ),
+                        const SizedBox(height: 15),
                         ElevatedButton(
                           onPressed: () {
                             search = searchController.text;
