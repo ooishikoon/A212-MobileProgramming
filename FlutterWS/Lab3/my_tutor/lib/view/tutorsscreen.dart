@@ -24,11 +24,13 @@ class _TutorsScreenState extends State<TutorsScreen> {
   var color;
   late double screenHeight, screenWidth, resWidth;
   final df = DateFormat('dd/MM/yyyy hh:mm a');
+  TextEditingController searchController = TextEditingController();
+  String search = "";
 
   @override
   void initState() {
     super.initState();
-    _loadTutors(1);
+    _loadTutors(1, search);
   }
 
   @override
@@ -182,11 +184,28 @@ class _TutorsScreenState extends State<TutorsScreen> {
                         fontSize: 22,
                       )))
               : Column(children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 50, 0, 5),
-                    child: Text("Tutors",
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold)),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 50, 0, 5),
+                    child: Stack(
+                      children: <Widget>[
+                        const Center(
+                          child: Text("Tutors",
+                              style: TextStyle(
+                                  fontSize: 28, fontWeight: FontWeight.bold)),
+                        ),
+                        Container(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.search,
+                                size: 30,
+                              ),
+                              onPressed: () {
+                                _loadSearchDialog();
+                              },
+                            ))
+                      ],
+                    ),
                   ),
                   Expanded(
                       child: GridView.count(
@@ -277,7 +296,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                         return SizedBox(
                           width: 40,
                           child: TextButton(
-                              onPressed: () => {_loadTutors(index + 1)},
+                              onPressed: () => {_loadTutors(index + 1, "")},
                               child: Text(
                                 (index + 1).toString(),
                                 style: TextStyle(color: color),
@@ -290,12 +309,12 @@ class _TutorsScreenState extends State<TutorsScreen> {
     );
   }
 
-  void _loadTutors(int pageno) {
+  void _loadTutors(int pageno, String _search) {
     curpage = pageno;
     numofpage ?? 1;
     http.post(
         Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/load_tutors.php"),
-        body: {'pageno': pageno.toString()}).then((response) {
+        body: {'pageno': pageno.toString(),'search': _search,}).then((response) {
       var jsondata = jsonDecode(response.body);
       print(jsondata);
       if (response.statusCode == 200 && jsondata['status'] == 'success') {
@@ -385,6 +404,47 @@ class _TutorsScreenState extends State<TutorsScreen> {
                 ]),
               ],
             )),
+          );
+        });
+  }
+
+  void _loadSearchDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+            builder: (context, StateSetter setState) {
+              return AlertDialog(
+                title: const Text(
+                  "Search Tutors",
+                ),
+                content: SingleChildScrollView(
+                  child: SizedBox(
+                    height: screenHeight / 5,
+                    child: Column(
+                      children: [
+                        TextField(
+                          controller: searchController,
+                          decoration: InputDecoration(
+                              labelText: 'Search',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0))),
+                        ),
+                        const SizedBox(height: 15),
+                        ElevatedButton(
+                          onPressed: () {
+                            search = searchController.text;
+                            Navigator.of(context).pop();
+                            _loadTutors(1, search);
+                          },
+                          child: const Text("Search"),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
           );
         });
   }
