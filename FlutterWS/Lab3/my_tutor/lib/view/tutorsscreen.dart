@@ -379,16 +379,6 @@ class _TutorsScreenState extends State<TutorsScreen> {
                     tutorList[index].tutorId.toString(),
                   ),
                   const Text(
-                    "\nTutor Email:",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(tutorList[index].tutorEmail.toString()),
-                  const Text(
-                    "\nTutor Phone: ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(tutorList[index].tutorPhone.toString()),
-                  const Text(
                     "\nTutor Name:",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -405,6 +395,16 @@ class _TutorsScreenState extends State<TutorsScreen> {
                   Text(
                     tutorList[index].subjectname.toString(),
                   ),
+                  const Text(
+                    "\nTutor Email:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(tutorList[index].tutorEmail.toString()),
+                  const Text(
+                    "\nTutor Phone: ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(tutorList[index].tutorPhone.toString()),
                   const Text(
                     "\nTutor Register Date:",
                     style: TextStyle(fontWeight: FontWeight.bold),
