@@ -426,10 +426,10 @@ class _TutorsScreenState extends State<TutorsScreen> {
             builder: (context, StateSetter setState) {
               return AlertDialog(
                 title: const Text(
-                  "Search ",
+                  "Search Tutors",
                 ),
                 content: SizedBox(
-                  height: screenHeight / 5,
+                  height: screenHeight / 10,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -440,7 +440,6 @@ class _TutorsScreenState extends State<TutorsScreen> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       ),
-                      const SizedBox(height: 5),
                     ],
                   ),
                 ),

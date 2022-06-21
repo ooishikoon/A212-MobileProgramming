@@ -418,10 +418,10 @@ class _MainScreenState extends State<MainScreen> {
             builder: (context, StateSetter setState) {
               return AlertDialog(
                 title: const Text(
-                  "Search ",
+                  "Search Courses",
                 ),
                 content: SizedBox(
-                  height: screenHeight / 5,
+                  height: screenHeight / 10,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -432,7 +432,6 @@ class _MainScreenState extends State<MainScreen> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       ),
-                      const SizedBox(height: 5),
                     ],
                   ),
                 ),
