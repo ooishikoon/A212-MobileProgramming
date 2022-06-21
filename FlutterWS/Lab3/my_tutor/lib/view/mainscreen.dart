@@ -411,40 +411,41 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void _loadSearchDialog() {
-    showDialog(
+       showDialog(
         context: context,
         builder: (BuildContext context) {
           return StatefulBuilder(
             builder: (context, StateSetter setState) {
               return AlertDialog(
                 title: const Text(
-                  "Search Courses",
+                  "Search ",
                 ),
-                content: SingleChildScrollView(
-                  child: SizedBox(
-                    height: screenHeight / 5,
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: searchController,
-                          decoration: InputDecoration(
-                              labelText: 'Search',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0))),
-                        ),
-                        const SizedBox(height: 15),
-                        ElevatedButton(
-                          onPressed: () {
-                            search = searchController.text;
-                            Navigator.of(context).pop();
-                            _loadCourses(1, search);
-                          },
-                          child: const Text("Search"),
-                        )
-                      ],
-                    ),
+                content: SizedBox(
+                  height: screenHeight / 5,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextField(
+                        controller: searchController,
+                        decoration: InputDecoration(
+                            labelText: 'Search',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0))),
+                      ),
+                      const SizedBox(height: 5),
+                    ],
                   ),
                 ),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      search = searchController.text;
+                      Navigator.of(context).pop();
+                      _loadCourses(1, search);
+                    },
+                    child: const Text("Search"),
+                  )
+                ],
               );
             },
           );

@@ -379,6 +379,16 @@ class _TutorsScreenState extends State<TutorsScreen> {
                     tutorList[index].tutorId.toString(),
                   ),
                   const Text(
+                    "\nTutor Email:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(tutorList[index].tutorEmail.toString()),
+                  const Text(
+                    "\nTutor Phone: ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(tutorList[index].tutorPhone.toString()),
+                  const Text(
                     "\nTutor Name:",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -389,20 +399,12 @@ class _TutorsScreenState extends State<TutorsScreen> {
                   ),
                   Text(tutorList[index].tutorDescription.toString()),
                   const Text(
-                    "\nSubject List:",
+                    "\nTutor subject: ",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text(tutorList[index].subjectName.toString()),
-                  const Text(
-                    "\nTutor Email:",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  Text(
+                    tutorList[index].subjectname.toString(),
                   ),
-                  Text(tutorList[index].tutorEmail.toString()),
-                  const Text(
-                    "\nTutor Phone: ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(tutorList[index].tutorPhone.toString()),
                   const Text(
                     "\nTutor Register Date:",
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -424,33 +426,34 @@ class _TutorsScreenState extends State<TutorsScreen> {
             builder: (context, StateSetter setState) {
               return AlertDialog(
                 title: const Text(
-                  "Search Tutors",
+                  "Search ",
                 ),
-                content: SingleChildScrollView(
-                  child: SizedBox(
-                    height: screenHeight / 5,
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: searchController,
-                          decoration: InputDecoration(
-                              labelText: 'Search',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0))),
-                        ),
-                        const SizedBox(height: 15),
-                        ElevatedButton(
-                          onPressed: () {
-                            search = searchController.text;
-                            Navigator.of(context).pop();
-                            _loadTutors(1, search);
-                          },
-                          child: const Text("Search"),
-                        )
-                      ],
-                    ),
+                content: SizedBox(
+                  height: screenHeight / 5,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextField(
+                        controller: searchController,
+                        decoration: InputDecoration(
+                            labelText: 'Search',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0))),
+                      ),
+                      const SizedBox(height: 5),
+                    ],
                   ),
                 ),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      search = searchController.text;
+                      Navigator.of(context).pop();
+                      _loadTutors(1, search);
+                    },
+                    child: const Text("Search"),
+                  )
+                ],
               );
             },
           );
