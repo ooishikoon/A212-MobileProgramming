@@ -358,7 +358,7 @@ class _MainScreenState extends State<MainScreen> {
                 CachedNetworkImage(
                   imageUrl: CONSTANTS.server +
                       "/mytutor/mobile/assets/courses/" +
-                      courseList[index].tutorId.toString() +
+                      courseList[index].subjectId.toString() +
                       '.png',
                   fit: BoxFit.cover,
                   width: resWidth,
