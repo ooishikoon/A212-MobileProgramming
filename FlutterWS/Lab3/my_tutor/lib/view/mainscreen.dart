@@ -429,6 +429,10 @@ class _MainScreenState extends State<MainScreen> {
                         controller: searchController,
                         decoration: InputDecoration(
                             labelText: 'Search',
+                            suffixIcon: IconButton(
+                              onPressed: () => searchController.clear(),
+                              icon: const Icon(Icons.clear),
+                            ),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       ),

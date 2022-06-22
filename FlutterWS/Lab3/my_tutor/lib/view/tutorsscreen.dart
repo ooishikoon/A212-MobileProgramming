@@ -437,6 +437,10 @@ class _TutorsScreenState extends State<TutorsScreen> {
                         controller: searchController,
                         decoration: InputDecoration(
                             labelText: 'Search',
+                            suffixIcon: IconButton(
+                              onPressed: () => searchController.clear(),
+                              icon: const Icon(Icons.clear),
+                            ),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       ),
