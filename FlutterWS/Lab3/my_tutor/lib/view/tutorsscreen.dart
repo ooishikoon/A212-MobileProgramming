@@ -393,7 +393,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    tutorList[index].subjectname.toString(),
+                    tutorList[index].subjectName.toString(),
                   ),
                   const Text(
                     "\nTutor Email:",
