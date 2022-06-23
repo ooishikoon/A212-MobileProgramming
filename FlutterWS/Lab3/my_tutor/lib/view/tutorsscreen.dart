@@ -389,7 +389,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                   ),
                   Text(tutorList[index].tutorDescription.toString()),
                   const Text(
-                    "\nTutor subject: ",
+                    "\nTutor Subject: ",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
