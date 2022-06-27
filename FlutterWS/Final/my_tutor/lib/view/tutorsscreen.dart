@@ -5,8 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:my_tutor/constants.dart';
 import 'package:my_tutor/view/profilescreen.dart';
+import 'package:my_tutor/view/subscribescreen.dart';
 import '../model/tutors.dart';
 import '../model/user.dart';
+import 'favouritescreen.dart';
 import 'mainscreen.dart';
 
 User user = User();
@@ -116,7 +118,13 @@ class _TutorsScreenState extends State<TutorsScreen> {
                           color: Colors.amber,
                           child: InkWell(
                             splashColor: Colors.amber,
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const SubscbribeScreen()));
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -137,7 +145,13 @@ class _TutorsScreenState extends State<TutorsScreen> {
                           color: Colors.amber,
                           child: InkWell(
                             splashColor: Colors.amber,
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const FavouriteScreen()));
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[

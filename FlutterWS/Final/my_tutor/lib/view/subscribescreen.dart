@@ -1,25 +1,22 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:my_tutor/view/mainscreen.dart';
-import 'package:my_tutor/view/subscribescreen.dart';
+import 'package:my_tutor/view/profilescreen.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
-import '../constants.dart';
 import '../model/user.dart';
 import 'favouritescreen.dart';
 import 'mainscreen.dart';
 import 'tutorsscreen.dart';
-import 'package:http/http.dart' as http;
 
 User user = User();
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class SubscbribeScreen extends StatefulWidget {
+  const SubscbribeScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<SubscbribeScreen> createState() => _SubscbribeScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _SubscbribeScreenState extends State<SubscbribeScreen> {
   late double screenHeight, screenWidth, resWidth;
 
   @override
@@ -186,38 +183,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Container(
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/images/profilescreen.png'),
+                      image: AssetImage('assets/images/subscribescreen.png'),
                       fit: BoxFit.cover))),
           Form(
-            child: Container(
-                margin: const EdgeInsets.only(top: 20),
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Container(
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              icon: const Icon(
-                                Icons.settings,
-                                size: 30,
-                              ),
-                              onPressed: () {
-                                null;
-                              },
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        // Profile image, details
-                        // Left image, Right details (Name, email)
-                      ],
-                    ))),
-          ),
+            child: Column(
+              children: const [
+                Padding(
+                    padding: EdgeInsets.fromLTRB(5, 50, 0, 5),
+                    child: Text("Subscribe",
+                              style: TextStyle(
+                                  fontSize: 28, fontWeight: FontWeight.bold)),
+                    ),
+              ],
+            ),
+          )
         ],
       ),
     );

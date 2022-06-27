@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:my_tutor/model/courses.dart';
 import 'package:my_tutor/model/user.dart';
 import 'package:my_tutor/view/profilescreen.dart';
+import 'package:my_tutor/view/subscribescreen.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
 import '../constants.dart';
+import 'favouritescreen.dart';
 
 User user = User();
 
@@ -119,7 +121,13 @@ class _MainScreenState extends State<MainScreen> {
                           color: Colors.amber,
                           child: InkWell(
                             splashColor: Colors.amber,
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const SubscbribeScreen()));
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -140,7 +148,13 @@ class _MainScreenState extends State<MainScreen> {
                           color: Colors.amber,
                           child: InkWell(
                             splashColor: Colors.amber,
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const FavouriteScreen()));
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
