@@ -212,22 +212,41 @@ class _MainScreenState extends State<MainScreen> {
                     padding: const EdgeInsets.fromLTRB(5, 50, 0, 5),
                     child: Stack(
                       children: <Widget>[
-                        const Center(
-                          child: Text("Courses",
-                              style: TextStyle(
-                                  fontSize: 28, fontWeight: FontWeight.bold)),
-                        ),
-                        Container(
-                            alignment: Alignment.centerRight,
-                            child: IconButton(
-                              icon: const Icon(
-                                Icons.search,
-                                size: 30,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 95,
+                            ),
+                            const Expanded(
+                              flex: 10,
+                              child: Center(
+                                child: Text("Courses",
+                                    style: TextStyle(
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.bold)),
                               ),
-                              onPressed: () {
-                                _loadSearchDialog();
-                              },
-                            ))
+                            ),
+                            Expanded(
+                                flex: 2,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.add_shopping_cart,
+                                    size: 30,
+                                  ),
+                                )),
+                            Expanded(
+                                flex: 2,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.search,
+                                    size: 30,
+                                  ),
+                                )),
+                          ],
+                        ),
                       ],
                     ),
                   ),
