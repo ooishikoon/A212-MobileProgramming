@@ -330,7 +330,7 @@ class _MainScreenState extends State<MainScreen> {
                                           ),
                                         ),
                                         Flexible(
-                                            flex: 2,
+                                            flex: 1,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
