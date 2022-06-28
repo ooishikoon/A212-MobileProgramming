@@ -10,6 +10,7 @@ import 'package:my_tutor/view/profilescreen.dart';
 import 'package:my_tutor/view/subscribescreen.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
 import '../constants.dart';
+import 'cartscreen.dart';
 import 'favouritescreen.dart';
 
 User user = User();
@@ -232,7 +233,13 @@ class _MainScreenState extends State<MainScreen> {
                             Expanded(
                                 flex: 2,
                                 child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                const CartScreen()));
+                                  },
                                   icon: const Icon(
                                     Icons.shopping_cart,
                                     size: 30,
@@ -323,19 +330,19 @@ class _MainScreenState extends State<MainScreen> {
                                           ),
                                         ),
                                         Flexible(
-                                          flex: 2,
+                                            flex: 2,
                                             child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            IconButton(
-                                                onPressed: () {
-                                                  _addtocartDialog(index);
-                                                },
-                                                icon: const Icon(
-                                                    Icons.add_shopping_cart))
-                                          ],
-                                        )),
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                IconButton(
+                                                    onPressed: () {
+                                                      _addtocartDialog(index);
+                                                    },
+                                                    icon: const Icon(Icons
+                                                        .add_shopping_cart))
+                                              ],
+                                            )),
                                         const SizedBox(height: 20),
                                       ],
                                     )),
