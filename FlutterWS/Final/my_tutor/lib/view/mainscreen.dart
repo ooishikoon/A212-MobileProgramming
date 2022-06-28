@@ -232,14 +232,16 @@ class _MainScreenState extends State<MainScreen> {
                                 child: IconButton(
                                   onPressed: () {},
                                   icon: const Icon(
-                                    Icons.add_shopping_cart,
+                                    Icons.shopping_cart,
                                     size: 30,
                                   ),
                                 )),
                             Expanded(
                                 flex: 2,
                                 child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _loadSearchDialog();
+                                  },
                                   icon: const Icon(
                                     Icons.search,
                                     size: 30,
@@ -315,6 +317,14 @@ class _MainScreenState extends State<MainScreen> {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
+                                              Expanded(
+                                                  flex: 3,
+                                                  child: IconButton(
+                                                      onPressed: () {
+                                                        _addtocartDialog(index);
+                                                      },
+                                                      icon: const Icon(Icons
+                                                          .add_shopping_cart))),
                                             ],
                                           ),
                                         ),
@@ -446,12 +456,21 @@ class _MainScreenState extends State<MainScreen> {
                 ]),
               ],
             )),
+            actions: [
+              SizedBox(
+                  width: screenWidth / 1,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        _addtocartDialog(index);
+                      },
+                      child: const Text("Add to cart"))),
+            ],
           );
         });
   }
 
   void _loadSearchDialog() {
-       showDialog(
+    showDialog(
         context: context,
         builder: (BuildContext context) {
           return StatefulBuilder(
@@ -494,4 +513,6 @@ class _MainScreenState extends State<MainScreen> {
           );
         });
   }
+
+  void _addtocartDialog(int index) {}
 }
