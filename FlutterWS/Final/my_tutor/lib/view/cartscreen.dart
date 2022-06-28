@@ -16,6 +16,11 @@ class _CartScreenState extends State<CartScreen> {
   String titlecenter = "Loading...";
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) => Scaffold(
         body: Stack(
           children: [
@@ -33,7 +38,7 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               ),
             ),
-            buildEmptyCartDialog(),
+            buildEmptyCartMessage(),
           ],
         ),
       );
@@ -64,13 +69,13 @@ class _CartScreenState extends State<CartScreen> {
         },
       );
 
-  Widget buildEmptyCartDialog() => Container(
+  Widget buildEmptyCartMessage() => Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text("There are no courses in your cart.",
+            const Text("There are no course in your cart.",
                 style: TextStyle(fontSize: 20)),
             TextButton(
               style: TextButton.styleFrom(
