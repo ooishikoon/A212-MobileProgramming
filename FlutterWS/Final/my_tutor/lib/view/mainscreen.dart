@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:my_tutor/model/courses.dart';
 import 'package:my_tutor/model/user.dart';
+import 'package:my_tutor/model/cart.dart';
 import 'package:my_tutor/view/profilescreen.dart';
 import 'package:my_tutor/view/subscribescreen.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
@@ -317,17 +319,23 @@ class _MainScreenState extends State<MainScreen> {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
-                                              Expanded(
-                                                  flex: 3,
-                                                  child: IconButton(
-                                                      onPressed: () {
-                                                        _addtocartDialog(index);
-                                                      },
-                                                      icon: const Icon(Icons
-                                                          .add_shopping_cart))),
                                             ],
                                           ),
                                         ),
+                                        Flexible(
+                                          flex: 2,
+                                            child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                                onPressed: () {
+                                                  _addtocartDialog(index);
+                                                },
+                                                icon: const Icon(
+                                                    Icons.add_shopping_cart))
+                                          ],
+                                        )),
                                         const SizedBox(height: 20),
                                       ],
                                     )),
@@ -514,5 +522,37 @@ class _MainScreenState extends State<MainScreen> {
         });
   }
 
-  void _addtocartDialog(int index) {}
+  void _addtocartDialog(int index) {
+    _addtoCart(index);
+  }
+
+  void _addtoCart(int index) {
+    //     http.post(
+    //     Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/insert_cart.php"),
+    //     body: {
+    //       "email": widget.user.email.toString(),
+    //       "subjectId": courseList[index].subjectId.toString(),
+    //     }).timeout(
+    //   const Duration(seconds: 5),
+    //   onTimeout: () {
+    //     return http.Response(
+    //         'Error', 408); // Request Timeout response status code
+    //   },
+    // ).then((response) {
+    //   print(response.body);
+    //   var jsondata = jsonDecode(response.body);
+    //   if (response.statusCode == 200 && jsondata['status'] == 'success') {
+    //     print(jsondata['data']['carttotal'].toString());
+    //     setState(() {
+    //       widget.user.cart = jsondata['data']['carttotal'].toString();
+    //     });
+    //     Fluttertoast.showToast(
+    //         msg: "Success",
+    //         toastLength: Toast.LENGTH_SHORT,
+    //         gravity: ToastGravity.BOTTOM,
+    //         timeInSecForIosWeb: 1,
+    //         fontSize: 16.0);
+    //   }
+    // });
+  }
 }
