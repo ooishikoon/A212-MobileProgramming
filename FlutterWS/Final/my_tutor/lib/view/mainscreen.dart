@@ -292,7 +292,7 @@ class _MainScreenState extends State<MainScreen> {
                                     child: Column(
                                       children: [
                                         Flexible(
-                                          flex: 6,
+                                          flex: 5,
                                           child: CachedNetworkImage(
                                             imageUrl: CONSTANTS.server +
                                                 "/mytutor/mobile/assets/courses/" +
@@ -330,7 +330,7 @@ class _MainScreenState extends State<MainScreen> {
                                           ),
                                         ),
                                         Flexible(
-                                            flex: 1,
+                                            flex: 2,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
