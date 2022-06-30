@@ -405,6 +405,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     String _address = _addressController.text;
     String _email = _emailController.text;
     String _password = _passwordController.text;
+    String base64Image = base64Encode(_image!.readAsBytesSync());
     FocusScope.of(context).unfocus();
     ProgressDialog progressDialog = ProgressDialog(context,
         message: const Text("Registration in progress.."),
@@ -418,7 +419,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           "phoneno": _phoneno,
           "address": _address,
           "email": _email,
-          "password": _password
+          "password": _password,
+          "image": base64Image,
         }).then((response) {
       var data = jsonDecode(response.body);
       if (response.statusCode == 200 && data['status'] == 'success') {
