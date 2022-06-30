@@ -242,7 +242,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Expanded(
                     flex: 6,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -253,6 +253,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
                             ),
+                          ),
+                          SizedBox(
+                            height: 8,
                           ),
                           Text(
                             "Email",
@@ -268,6 +271,121 @@ class _ProfileScreenState extends State<ProfileScreen> {
             // ),
           ),
           Expanded(
+            flex: 2,
+            child: Card(
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 245, 240, 192),
+                      Color.fromARGB(255, 245, 243, 240)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                        child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => MainScreen(
+                                        user: user,
+                                      )));
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const <Widget>[
+                            Icon(Icons.emoji_people_outlined),
+                            Text("Following"),
+                          ],
+                        ),
+                      ),
+                    )),
+                    Expanded(
+                        child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => MainScreen(
+                                        user: user,
+                                      )));
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const <Widget>[
+                            Icon(Icons.people_alt_outlined),
+                            Text("Follower"),
+                          ],
+                        ),
+                      ),
+                    )),
+                    Expanded(
+                        child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => MainScreen(
+                                        user: user,
+                                      )));
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const <Widget>[
+                            Icon(Icons.message_outlined),
+                            Text("Message"),
+                          ],
+                        ),
+                      ),
+                    )),
+                    Expanded(
+                        child: SizedBox.fromSize(
+                      size: const Size(45, 45),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => MainScreen(
+                                        user: user,
+                                      )));
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const <Widget>[
+                            Icon(Icons.account_balance_wallet_outlined),
+                            Text("Wallet"),
+                          ],
+                        ),
+                      ),
+                    )),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            flex: 8,
             child: Card(
               elevation: 10,
               shape: RoundedRectangleBorder(
