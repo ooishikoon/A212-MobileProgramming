@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:my_tutor/view/favouritescreen.dart';
 import 'package:my_tutor/view/mainscreen.dart';
+import 'package:my_tutor/view/settingscreen.dart';
 import 'package:my_tutor/view/subscribescreen.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
 import '../constants.dart';
@@ -209,7 +210,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Icons.settings,
           size: 40,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (content) => SettingScreen()));
+        },
       );
 
   Widget buildProfile() => Column(
