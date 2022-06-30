@@ -189,6 +189,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Align(alignment: Alignment.topRight, child: buildBookmark()),
                   buildProfile(),
+                  // buildButtons(),
                 ],
               ),
             ),
@@ -212,47 +213,81 @@ class _ProfileScreenState extends State<ProfileScreen> {
         onPressed: () {},
       );
 
-  Widget buildProfile() => SizedBox(
-        child: Row(
-          children: [
-            Expanded(
-              flex: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                  onTap: () => {},
-                  child: SizedBox(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(200),
-                      child: Image.asset('assets/images/avatar.png'),
+  Widget buildProfile() => Column(
+        children: [
+          SizedBox(
+            // child: Card(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: GestureDetector(
+                      onTap: () => {},
+                      child: SizedBox(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(200),
+                          child: Image.asset('assets/images/avatar.png'),
+                        ),
+                      ),
                     ),
+                  ),
+                ),
+                Expanded(
+                    flex: 6,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Name",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            "Email",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    )),
+              ],
+            ),
+            // ),
+          ),
+          Expanded(
+            child: Card(
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 247, 242, 199),
+                      Color.fromARGB(255, 207, 206, 204)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
                 ),
               ),
             ),
-            Expanded(
-                flex: 6,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        "Name",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Text(
-                        "Email",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                )),
-          ],
-        ),
+          )
+        ],
       );
+
+  // Widget buildButtons() => Container(
+  //       decoration: BoxDecoration(
+  //         border: Border.all(color: const Color.fromARGB(255, 235, 231, 231)),
+  //         color: const Color.fromARGB(255, 235, 231, 231),
+  //         borderRadius: BorderRadius.circular(10),
+  //       ),
+  //     );
 }
