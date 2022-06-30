@@ -212,7 +212,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         onPressed: () {
           Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (content) => SettingScreen()));
+              MaterialPageRoute(builder: (content) => const SettingScreen()));
         },
       );
 
