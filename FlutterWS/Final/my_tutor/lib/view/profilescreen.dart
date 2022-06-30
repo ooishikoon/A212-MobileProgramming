@@ -164,7 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            const ProfileScreen()));
+                                            ProfileScreen()));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -189,7 +189,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Align(alignment: Alignment.topRight, child: buildBookmark()),
                   buildProfile(),
-                  // buildButtons(),
                 ],
               ),
             ),
@@ -229,6 +228,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(200),
                           child: Image.asset('assets/images/avatar.png'),
+                          // child: Image.network(CONSTANTS.server +
+                          //     '/mytutor/mobile/assets/users/${widget.user.id}.jpg')
+                          // child: CachedNetworkImage(imageUrl: CONSTANTS.server +
+                          //             "/mytutor/mobile/assets/users/" +
+                          //             widget.user.id.toString() +
+                          //             '.jpg', )
                         ),
                       ),
                     ),
@@ -253,6 +258,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             "Email",
                             style: TextStyle(fontSize: 16),
                           ),
+                          // Text(widget.user.name.toString()),
+                          // Text(widget.user.email.toString()),
                         ],
                       ),
                     )),
@@ -267,27 +274,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
                     colors: [
-                      Color.fromARGB(255, 247, 242, 199),
-                      Color.fromARGB(255, 207, 206, 204)
+                      Color.fromARGB(255, 245, 240, 192),
+                      Color.fromARGB(255, 245, 243, 240)
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
           )
         ],
       );
-
-  // Widget buildButtons() => Container(
-  //       decoration: BoxDecoration(
-  //         border: Border.all(color: const Color.fromARGB(255, 235, 231, 231)),
-  //         color: const Color.fromARGB(255, 235, 231, 231),
-  //         borderRadius: BorderRadius.circular(10),
-  //       ),
-  //     );
 }
