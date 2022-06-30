@@ -268,7 +268,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )),
               ],
             ),
-            // ),
           ),
           Expanded(
             flex: 2,
@@ -382,7 +381,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Expanded(
             flex: 8,
@@ -402,6 +401,285 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                        child: GridView.count(
+                      // 12 items
+                      crossAxisCount: 4,
+                      childAspectRatio: 1,
+                      // 9 items
+                      // crossAxisCount: 3,
+                      // childAspectRatio: 1.5,
+                      children: [
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.download_outlined),
+                                Text("Downlaod"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.bookmark_outline),
+                                Text("Bookmark"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.history_outlined),
+                                Text("History"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.playlist_play_outlined),
+                                Text("Playlist"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.av_timer_outlined),
+                                Text("Time off"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.task_outlined),
+                                Text("Task"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.account_balance_wallet_outlined),
+                                Text("Wallet"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.account_balance_wallet_outlined),
+                                Text("Wallet"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.account_balance_wallet_outlined),
+                                Text("Wallet"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.account_balance_wallet_outlined),
+                                Text("Wallet"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.account_balance_wallet_outlined),
+                                Text("Wallet"),
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: SizedBox.fromSize(
+                          size: const Size(45, 45),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                            user: user,
+                                          )));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.account_balance_wallet_outlined),
+                                Text("Wallet"),
+                              ],
+                            ),
+                          ),
+                        )),
+                      ],
+                    )),
+                  ],
                 ),
               ),
             ),
