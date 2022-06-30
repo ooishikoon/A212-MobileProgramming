@@ -369,8 +369,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const <Widget>[
-                            Icon(Icons.account_balance_wallet_outlined),
-                            Text("Wallet"),
+                            Icon(Icons.notification_important_outlined),
+                            Text("Notifications"),
                           ],
                         ),
                       ),
@@ -561,8 +561,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
-                                Icon(Icons.account_balance_wallet_outlined),
-                                Text("Wallet"),
+                                Icon(Icons.mode),
+                                Text("Theme"),
                               ],
                             ),
                           ),
@@ -605,8 +605,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
-                                Icon(Icons.account_balance_wallet_outlined),
-                                Text("Wallet"),
+                                Icon(Icons.view_list_outlined),
+                                Text("Purchased"),
                               ],
                             ),
                           ),
@@ -627,8 +627,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
-                                Icon(Icons.account_balance_wallet_outlined),
-                                Text("Wallet"),
+                                Icon(Icons.qr_code_scanner_outlined),
+                                Text("Qr Scan"),
                               ],
                             ),
                           ),
@@ -649,8 +649,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
-                                Icon(Icons.account_balance_wallet_outlined),
-                                Text("Wallet"),
+                                Icon(Icons.design_services_outlined),
+                                Text("Services"),
                               ],
                             ),
                           ),
@@ -671,8 +671,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
-                                Icon(Icons.account_balance_wallet_outlined),
-                                Text("Wallet"),
+                                Icon(Icons.help_center_outlined),
+                                Text("Help"),
                               ],
                             ),
                           ),
