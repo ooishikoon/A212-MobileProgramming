@@ -106,86 +106,86 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
+                          flex: 2,
+                          child: GestureDetector(
+                            onTap: () => {},
+                            child: SizedBox(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(200),
+                                child: Image.asset('assets/images/avatar.png'),
+                              ),
+                            ),
+                          )),
+                      Expanded(
+                          flex: 4,
                           child: ListView(
-                        children: <Widget>[
-                          Expanded(
-                              flex: 2,
-                              child: GestureDetector(
-                                onTap: () => {},
-                                child: SizedBox(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(200),
-                                    child:
-                                        Image.asset('assets/images/avatar.png'),
-                                  ),
-                                ),
-                              )),
-                          Column(
                             children: <Widget>[
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  textStyle: const TextStyle(fontSize: 20),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'UPDATE NAME',
-                                  style: TextStyle(
-                                    color: Colors.black,
+                              Column(
+                                children: <Widget>[
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: const TextStyle(fontSize: 20),
+                                    ),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'UPDATE NAME',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  textStyle: const TextStyle(fontSize: 20),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'UPDATE PASSWORD',
-                                  style: TextStyle(
-                                    color: Colors.black,
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: const TextStyle(fontSize: 20),
+                                    ),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'UPDATE PASSWORD',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  textStyle: const TextStyle(fontSize: 20),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'UPDATE EMAIL',
-                                  style: TextStyle(
-                                    color: Colors.black,
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: const TextStyle(fontSize: 20),
+                                    ),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'UPDATE EMAIL',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  textStyle: const TextStyle(fontSize: 20),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'UPDATE ADDRESS',
-                                  style: TextStyle(
-                                    color: Colors.black,
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: const TextStyle(fontSize: 20),
+                                    ),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'UPDATE ADDRESS',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  textStyle: const TextStyle(fontSize: 20),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'LOG OUT',
-                                  style: TextStyle(
-                                    color: Colors.black,
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: const TextStyle(fontSize: 20),
+                                    ),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'LOG OUT',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
+                                ],
+                              )
                             ],
-                          )
-                        ],
-                      ))
+                          ))
                     ],
                   ),
                 ),
