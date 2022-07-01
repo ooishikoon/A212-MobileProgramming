@@ -39,7 +39,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 ],
               ),
             ),
-            buildEmptyCartMessage(),
+            buildSettingList(),
           ],
         ),
       );
@@ -66,7 +66,7 @@ class _SettingScreenState extends State<SettingScreen> {
         },
       );
 
-  Widget buildEmptyCartMessage() => Container(
+  Widget buildSettingList() => Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
         child: Column(
@@ -77,4 +77,6 @@ class _SettingScreenState extends State<SettingScreen> {
           ],
         ),
       );
+
+      
 }
