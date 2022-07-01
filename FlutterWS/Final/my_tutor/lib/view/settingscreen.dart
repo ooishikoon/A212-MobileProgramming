@@ -102,55 +102,97 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: ListView(
+                        children: <Widget>[
+                          Expanded(
+                              flex: 2,
+                              child: GestureDetector(
+                                onTap: () => {},
+                                child: SizedBox(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(200),
+                                    child:
+                                        Image.asset('assets/images/avatar.png'),
+                                  ),
+                                ),
+                              )),
+                          Column(
+                            children: <Widget>[
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle: const TextStyle(fontSize: 20),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  'UPDATE NAME',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle: const TextStyle(fontSize: 20),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  'UPDATE PASSWORD',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle: const TextStyle(fontSize: 20),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  'UPDATE EMAIL',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle: const TextStyle(fontSize: 20),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  'UPDATE ADDRESS',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle: const TextStyle(fontSize: 20),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  'LOG OUT',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ))
+                    ],
+                  ),
                 ),
               ),
             )
           ],
         ),
-        // child: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     Expanded(
-        //         child: ListView(
-        //             padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-        //             shrinkWrap: true,
-        //             children: [
-        //           MaterialButton(
-        //             onPressed: _updateNameDialog,
-        //             child: const Text("UPDATE NAME"),
-        //             color: Colors.grey,
-        //           ),
-        //           const Divider(
-        //             height: 2,
-        //           ),
-        //           MaterialButton(
-        //             onPressed: _changePassDialog,
-        //             child: const Text("UPDATE PASSWORD"),
-        //           ),
-        //           const Divider(
-        //             height: 2,
-        //           ),
-        //           MaterialButton(
-        //             onPressed: _updatePhoneDialog,
-        //             child: const Text("UPDATE PHONE NUMBER"),
-        //           ),
-        //           const Divider(
-        //             height: 2,
-        //           ),
-        //           MaterialButton(
-        //             onPressed: _updateAddressDialog,
-        //             child: const Text("UPDATE ADDRESS"),
-        //           ),
-        //           const Divider(
-        //             height: 2,
-        //           ),
-        //           MaterialButton(
-        //             onPressed: _logoutDialog,
-        //             child: const Text("LOGOUT"),
-        //           ),
-        //         ])),
-        //   ],
-        // ),
       );
 
   void _updateNameDialog() {}
