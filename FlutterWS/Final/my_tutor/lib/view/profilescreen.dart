@@ -32,8 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // _emailController.text = widget.user.email.toString();
   }
 
-  // final user: widget.user;
-
   @override
   Widget build(BuildContext context) => Scaffold(
         bottomNavigationBar: BottomAppBar(
@@ -167,7 +165,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            ProfileScreen()));
+                                            const ProfileScreen()));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -301,14 +299,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: SizedBox.fromSize(
                       size: const Size(45, 45),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => MainScreen(
-                                        user: user,
-                                      )));
-                        },
+                        onTap: () {},
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const <Widget>[
@@ -322,14 +313,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: SizedBox.fromSize(
                       size: const Size(45, 45),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => MainScreen(
-                                        user: user,
-                                      )));
-                        },
+                        onTap: () {},
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const <Widget>[
@@ -343,14 +327,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: SizedBox.fromSize(
                       size: const Size(45, 45),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => MainScreen(
-                                        user: user,
-                                      )));
-                        },
+                        onTap: () {},
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const <Widget>[
@@ -364,14 +341,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: SizedBox.fromSize(
                       size: const Size(45, 45),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => MainScreen(
-                                        user: user,
-                                      )));
-                        },
+                        onTap: () {},
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const <Widget>[
@@ -422,15 +392,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -443,15 +405,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -464,15 +418,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -485,15 +431,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -506,15 +444,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -527,15 +457,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -548,15 +470,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -569,15 +483,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -590,15 +496,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -611,15 +509,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -632,15 +522,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -653,15 +535,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
@@ -674,15 +548,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox.fromSize(
                           size: const Size(45, 45),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MainScreen(
-                                            user: user,
-                                          )));
-                            },
+                            onTap: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[

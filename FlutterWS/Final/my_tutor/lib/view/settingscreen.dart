@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_tutor/view/profilescreen.dart';
 import '../model/user.dart';
-import 'mainscreen.dart';
 
 User user = User();
 
@@ -23,23 +22,36 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        drawerEdgeDragWidth: screenWidth = MediaQuery.of(context).size.width,
         body: Stack(
           children: [
             buildBackground(),
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 15),
               child: Stack(
                 children: [
                   Align(alignment: Alignment.topLeft, child: buildBackButton()),
                   Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: Align(
-                        alignment: Alignment.topCenter, child: buildTitle()),
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: buildTitle(),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 12,
+                          child: buildSettingList(),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
-            buildSettingList(),
           ],
         ),
       );
@@ -48,7 +60,7 @@ class _SettingScreenState extends State<SettingScreen> {
         child: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/cartscreen.png'),
+                    image: AssetImage('assets/images/settingscreen.png'),
                     fit: BoxFit.cover))),
       );
 
@@ -67,16 +79,91 @@ class _SettingScreenState extends State<SettingScreen> {
       );
 
   Widget buildSettingList() => Container(
+        width: screenWidth,
         alignment: Alignment.center,
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+        padding: const EdgeInsets.all(0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text("Setting List",
-                style: TextStyle(fontSize: 20)),
+          children: [
+            Expanded(
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color.fromARGB(255, 245, 240, 192),
+                        Color.fromARGB(255, 245, 243, 240)
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
+        // child: Column(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Expanded(
+        //         child: ListView(
+        //             padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+        //             shrinkWrap: true,
+        //             children: [
+        //           MaterialButton(
+        //             onPressed: _updateNameDialog,
+        //             child: const Text("UPDATE NAME"),
+        //             color: Colors.grey,
+        //           ),
+        //           const Divider(
+        //             height: 2,
+        //           ),
+        //           MaterialButton(
+        //             onPressed: _changePassDialog,
+        //             child: const Text("UPDATE PASSWORD"),
+        //           ),
+        //           const Divider(
+        //             height: 2,
+        //           ),
+        //           MaterialButton(
+        //             onPressed: _updatePhoneDialog,
+        //             child: const Text("UPDATE PHONE NUMBER"),
+        //           ),
+        //           const Divider(
+        //             height: 2,
+        //           ),
+        //           MaterialButton(
+        //             onPressed: _updateAddressDialog,
+        //             child: const Text("UPDATE ADDRESS"),
+        //           ),
+        //           const Divider(
+        //             height: 2,
+        //           ),
+        //           MaterialButton(
+        //             onPressed: _logoutDialog,
+        //             child: const Text("LOGOUT"),
+        //           ),
+        //         ])),
+        //   ],
+        // ),
       );
 
-      
+  void _updateNameDialog() {}
+
+  void _changePassDialog() {}
+
+  void _updatePhoneDialog() {}
+
+  void _updateAddressDialog() {}
+
+  void _registerAccount() {}
+
+  void _loginDialog() {}
+
+  void _logoutDialog() {}
 }
