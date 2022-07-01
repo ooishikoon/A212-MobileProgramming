@@ -32,6 +32,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // _emailController.text = widget.user.email.toString();
   }
 
+  // final user: widget.user;
+
   @override
   Widget build(BuildContext context) => Scaffold(
         bottomNavigationBar: BottomAppBar(
