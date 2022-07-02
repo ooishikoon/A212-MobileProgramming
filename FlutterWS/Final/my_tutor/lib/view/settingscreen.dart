@@ -102,6 +102,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -153,6 +154,18 @@ class _SettingScreenState extends State<SettingScreen> {
                                     onPressed: () {},
                                     child: const Text(
                                       'UPDATE EMAIL',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: const TextStyle(fontSize: 20),
+                                    ),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'UPDATE PHONE NO',
                                       style: TextStyle(
                                         color: Colors.black,
                                       ),
