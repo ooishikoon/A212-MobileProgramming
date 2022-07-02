@@ -14,7 +14,8 @@ import 'mainscreen.dart';
 User user = User();
 
 class TutorsScreen extends StatefulWidget {
-  const TutorsScreen({Key? key}) : super(key: key);
+  final User user;
+  TutorsScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   State<TutorsScreen> createState() => _TutorsScreenState();
@@ -67,7 +68,8 @@ class _TutorsScreenState extends State<TutorsScreen> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (content) => MainScreen(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
                                             user: user,
                                           )));
                             },
@@ -96,7 +98,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const TutorsScreen()));
+                                          TutorsScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +125,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const SubscbribeScreen()));
+                                          SubscbribeScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -150,7 +152,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const FavouriteScreen()));
+                                          FavouriteScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -177,7 +179,7 @@ class _TutorsScreenState extends State<TutorsScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const ProfileScreen()));
+                                          ProfileScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

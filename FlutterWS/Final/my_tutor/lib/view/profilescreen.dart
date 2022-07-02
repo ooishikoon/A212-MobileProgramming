@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_tutor/view/favouritescreen.dart';
 import 'package:my_tutor/view/mainscreen.dart';
 import 'package:my_tutor/view/settingscreen.dart';
@@ -15,7 +16,8 @@ import 'package:http/http.dart' as http;
 User user = User();
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  final User user;
+  ProfileScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -84,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            const TutorsScreen()));
+                                            TutorsScreen(user: widget.user)));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -111,7 +113,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            const SubscbribeScreen()));
+                                            SubscbribeScreen(
+                                                user: widget.user)));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -138,7 +141,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            const FavouriteScreen()));
+                                            FavouriteScreen(
+                                                user: widget.user)));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -165,7 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            const ProfileScreen()));
+                                            ProfileScreen(user: widget.user)));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -188,7 +192,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.all(15),
               child: Stack(
                 children: [
-                  Align(alignment: Alignment.topRight, child: buildBookmark()),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      buildMode(),
+                      buildSetting(),
+                    ],
+// Align(alignment: Alignment.topRight, child: buildSetting()),
+                  ),
                   buildProfile(),
                 ],
               ),
@@ -205,14 +216,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     fit: BoxFit.cover))),
       );
 
-  Widget buildBookmark() => IconButton(
+  Widget buildSetting() => IconButton(
         icon: const Icon(
           Icons.settings,
-          size: 40,
+          size: 35,
         ),
         onPressed: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (content) => const SettingScreen()));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (content) => SettingScreen(user: widget.user)));
+        },
+      );
+
+  Widget buildMode() => IconButton(
+        icon: const Icon(Icons.lightbulb),
+        onPressed: () {
+          Get.isDarkMode
+              ? Get.changeTheme(ThemeData.light())
+              : Get.changeTheme(ThemeData.dark());
         },
       );
 
@@ -250,23 +272,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Name",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "Email",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          // Text(widget.user.name.toString()),
-                          // Text(widget.user.email.toString()),
+                        children: [
+                          // Text(
+                          //   "Name",
+                          //   style: TextStyle(
+                          //     fontSize: 20,
+                          //     fontWeight: FontWeight.w600,
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: 8,
+                          // ),
+                          // Text(
+                          //   "Email",
+                          //   style: TextStyle(fontSize: 16),
+                          // ),
+                          Text(widget.user.name.toString()),
+                          Text(widget.user.email.toString()),
                         ],
                       ),
                     )),

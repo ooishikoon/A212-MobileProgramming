@@ -38,8 +38,8 @@ class _MySplashScreenState extends State<MySplashScreen> {
     super.initState();
     Timer(
         const Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (content) => const LoginScreen())));
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (content) => const LoginScreen())));
   }
 
   @override

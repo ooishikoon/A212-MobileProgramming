@@ -5,7 +5,8 @@ import '../model/user.dart';
 User user = User();
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({Key? key}) : super(key: key);
+  final User user;
+  SettingScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   State<SettingScreen> createState() => _SettingScreenState();
@@ -73,8 +74,10 @@ class _SettingScreenState extends State<SettingScreen> {
           size: 40,
         ),
         onPressed: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (content) => const ProfileScreen()));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (content) => ProfileScreen(user: widget.user)));
         },
       );
 
@@ -215,10 +218,6 @@ class _SettingScreenState extends State<SettingScreen> {
   void _updatePhoneDialog() {}
 
   void _updateAddressDialog() {}
-
-  void _registerAccount() {}
-
-  void _loginDialog() {}
 
   void _logoutDialog() {}
 }

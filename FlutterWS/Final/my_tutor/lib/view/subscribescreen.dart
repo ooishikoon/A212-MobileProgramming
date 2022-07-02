@@ -10,7 +10,8 @@ import 'tutorsscreen.dart';
 User user = User();
 
 class SubscbribeScreen extends StatefulWidget {
-  const SubscbribeScreen({Key? key}) : super(key: key);
+  final User user;
+  const SubscbribeScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   State<SubscbribeScreen> createState() => _SubscbribeScreenState();
@@ -80,7 +81,7 @@ class _SubscbribeScreenState extends State<SubscbribeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const TutorsScreen()));
+                                          TutorsScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +108,7 @@ class _SubscbribeScreenState extends State<SubscbribeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const SubscbribeScreen()));
+                                          SubscbribeScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -134,7 +135,7 @@ class _SubscbribeScreenState extends State<SubscbribeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const FavouriteScreen()));
+                                          FavouriteScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -161,7 +162,7 @@ class _SubscbribeScreenState extends State<SubscbribeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const ProfileScreen()));
+                                          ProfileScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

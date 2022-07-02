@@ -102,7 +102,7 @@ class _MainScreenState extends State<MainScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const TutorsScreen()));
+                                          TutorsScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +129,7 @@ class _MainScreenState extends State<MainScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const SubscbribeScreen()));
+                                          SubscbribeScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -156,7 +156,7 @@ class _MainScreenState extends State<MainScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const FavouriteScreen()));
+                                          FavouriteScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -183,7 +183,7 @@ class _MainScreenState extends State<MainScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const ProfileScreen()));
+                                          ProfileScreen(user: widget.user)));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
