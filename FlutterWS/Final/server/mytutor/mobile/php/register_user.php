@@ -12,11 +12,16 @@ $phoneno = $_POST['phoneno'];
 $address = $_POST['address'];
 $email = $_POST['email'];
 $password = sha1($_POST['password']);
+$base64image = $_POST['image'];
 $na = "na";
 
 $sqlinsert = "INSERT INTO tbl_users (user_name, user_phoneno, user_address, user_email, user_password) VALUES('$name','$phoneno','$address','$email','$password')";
 if ($conn->query($sqlinsert) === TRUE) {
     $response = array('status' => 'success', 'data' => null);
+    $filename = mysqli_insert_id($conn);
+    $decoded_string = base64_decode($base64image);
+    $path = '../assets/users/' . $filename . '.jpg';
+    $is_written = file_put_contents($path, $decoded_string);
     sendEmail($email);
     sendJsonResponse($response);
 } else {

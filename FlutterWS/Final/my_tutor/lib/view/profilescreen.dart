@@ -252,15 +252,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onTap: () => {},
                       child: SizedBox(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(200),
-                          child: Image.asset('assets/images/avatar.png'),
-                          // child: Image.network(CONSTANTS.server +
-                          //     '/mytutor/mobile/assets/users/${widget.user.id}.jpg')
-                          // child: CachedNetworkImage(imageUrl: CONSTANTS.server +
-                          //             "/mytutor/mobile/assets/users/" +
-                          //             widget.user.id.toString() +
-                          //             '.jpg', )
-                        ),
+                            borderRadius: BorderRadius.circular(200),
+                            child: CachedNetworkImage(
+                              imageUrl: CONSTANTS.server +
+                                  "/mytutor/mobile/assets/users/" +
+                                  widget.user.id.toString() +
+                                  '.jpg',
+                            )),
                       ),
                     ),
                   ),
@@ -273,20 +271,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Text(
-                          //   "Name",
-                          //   style: TextStyle(
-                          //     fontSize: 20,
-                          //     fontWeight: FontWeight.w600,
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: 8,
-                          // ),
-                          // Text(
-                          //   "Email",
-                          //   style: TextStyle(fontSize: 16),
-                          // ),
                           Text(widget.user.name.toString()),
                           Text(widget.user.email.toString()),
                         ],
