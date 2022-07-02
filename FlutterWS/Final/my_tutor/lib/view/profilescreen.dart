@@ -30,8 +30,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    // _nameController.text = widget.user.name.toString();
-    // _emailController.text = widget.user.email.toString();
   }
 
   @override
@@ -271,8 +269,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(widget.user.name.toString()),
-                          Text(widget.user.email.toString()),
+                          Text(
+                            widget.user.name.toString(),
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            widget.user.email.toString(),
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
                         ],
                       ),
                     )),
