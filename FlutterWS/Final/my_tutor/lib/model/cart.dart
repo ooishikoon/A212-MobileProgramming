@@ -1,40 +1,40 @@
 class Cart {
-  String? cartId;
+  String? cartid;
   String? subjectName;
   String? subjectQty;
   String? price;
-  String? cartQty;
+  String? cartqty;
   String? subjectId;
-  String? priceTotal;
+  String? pricetotal;
 
   Cart(
-      {this.cartId,
+      {this.cartid,
       this.subjectName,
       this.subjectQty,
       this.price,
-      this.cartQty,
+      this.cartqty,
       this.subjectId,
-      this.priceTotal});
+      this.pricetotal});
 
   Cart.fromJson(Map<String, dynamic> json) {
-    cartId = json['cartId'];
+    cartid = json['cartid'];
     subjectName = json['subjectName'];
     subjectQty = json['subjectQty'];
     price = json['price'];
-    cartQty = json['cartQty'];
+    cartqty = json['cartqty'];
     subjectId = json['subjectId'];
-    priceTotal = json['priceTotal'];
+    pricetotal = json['pricetotal'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['cartId'] = cartId;
+    data['cartid'] = cartid;
     data['subjectName'] = subjectName;
     data['subjectQty'] = subjectQty;
     data['price'] = price;
-    data['cartQty'] = cartQty;
+    data['cartqty'] = cartqty;
     data['subjectId'] = subjectId;
-    data['priceTotal'] = priceTotal;
+    data['pricetotal'] = pricetotal;
     return data;
   }
 }

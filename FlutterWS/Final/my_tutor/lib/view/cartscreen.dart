@@ -5,7 +5,8 @@ import 'mainscreen.dart';
 User user = User();
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({Key? key}) : super(key: key);
+  final User user;
+  const CartScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   State<CartScreen> createState() => _CartScreenState();

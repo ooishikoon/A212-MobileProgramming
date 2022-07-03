@@ -563,19 +563,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                         ),
-                        SizedBox.fromSize(
-                          size: const Size(45, 45),
-                          child: InkWell(
-                            onTap: () {},
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const <Widget>[
-                                Icon(Icons.download_outlined),
-                                Text("Downlaod"),
-                              ],
-                            ),
-                          ),
-                        ),
                       ],
                     )),
                   ],

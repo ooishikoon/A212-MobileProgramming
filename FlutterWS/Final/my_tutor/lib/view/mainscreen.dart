@@ -31,6 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   String titlecenter = "Loading...";
   var numofpage, curpage = 1;
   var color;
+  int cart = 0;
   late double screenHeight, screenWidth, resWidth;
   TextEditingController searchController = TextEditingController();
   String search = "";
@@ -238,7 +239,8 @@ class _MainScreenState extends State<MainScreen> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                const CartScreen()));
+                                                CartScreen(user: widget.user)));
+                                    _loadMyCart();
                                   },
                                   icon: const Icon(
                                     Icons.shopping_cart,
@@ -534,32 +536,55 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void _addtoCart(int index) {
-    //     http.post(
-    //     Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/insert_cart.php"),
-    //     body: {
-    //       "email": widget.user.email.toString(),
-    //       "subjectId": courseList[index].subjectId.toString(),
-    //     }).timeout(
-    //   const Duration(seconds: 5),
-    //   onTimeout: () {
-    //     return http.Response(
-    //         'Error', 408); // Request Timeout response status code
-    //   },
-    // ).then((response) {
-    //   print(response.body);
-    //   var jsondata = jsonDecode(response.body);
-    //   if (response.statusCode == 200 && jsondata['status'] == 'success') {
-    //     print(jsondata['data']['carttotal'].toString());
-    //     setState(() {
-    //       widget.user.cart = jsondata['data']['carttotal'].toString();
-    //     });
-    //     Fluttertoast.showToast(
-    //         msg: "Success",
-    //         toastLength: Toast.LENGTH_SHORT,
-    //         gravity: ToastGravity.BOTTOM,
-    //         timeInSecForIosWeb: 1,
-    //         fontSize: 16.0);
-    //   }
-    // });
+    http.post(
+        Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/insert_cart.php"),
+        body: {
+          "email": widget.user.email.toString(),
+          "subjectId": courseList[index].subjectId.toString(),
+        }).timeout(
+      const Duration(seconds: 5),
+      onTimeout: () {
+        return http.Response(
+            'Error', 408); // Request Timeout response status code
+      },
+    ).then((response) {
+      print(response.body);
+      var jsondata = jsonDecode(response.body);
+      if (response.statusCode == 200 && jsondata['status'] == 'success') {
+        print(jsondata['data']['carttotal'].toString());
+        setState(() {
+          widget.user.cart = jsondata['data']['carttotal'].toString();
+        });
+        Fluttertoast.showToast(
+            msg: "Success",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            fontSize: 16.0);
+      }
+    });
+  }
+
+  void _loadMyCart() {
+    http.post(
+        Uri.parse(CONSTANTS.server + "/mytutor/mobile/php/load_mycart.php"),
+        body: {
+          "email": widget.user.email.toString(),
+        }).timeout(
+      const Duration(seconds: 5),
+      onTimeout: () {
+        return http.Response(
+            'Error', 408); // Request Timeout response status code
+      },
+    ).then((response) {
+      print(response.body);
+      var jsondata = jsonDecode(response.body);
+      if (response.statusCode == 200 && jsondata['status'] == 'success') {
+        print(jsondata['data']['carttotal'].toString());
+        setState(() {
+          widget.user.cart = jsondata['data']['carttotal'].toString();
+        });
+      }
+    });
   }
 }
