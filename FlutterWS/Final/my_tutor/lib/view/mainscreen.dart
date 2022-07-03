@@ -549,7 +549,8 @@ class _MainScreenState extends State<MainScreen> {
                 "Yes",
                 style: TextStyle(),
               ),
-              onPressed: () async {
+              onPressed: () {
+                Navigator.of(context).pop();
                 _addtoCart(index);
               },
             ),
