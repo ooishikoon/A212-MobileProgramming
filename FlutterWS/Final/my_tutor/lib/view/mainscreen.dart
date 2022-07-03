@@ -539,7 +539,7 @@ class _MainScreenState extends State<MainScreen> {
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           title: const Text(
-            "Add to cart?",
+            "Add the course to cart?",
             style: TextStyle(fontWeight: FontWeight.w600,),
           ),
           content: const Text("Are you sure?", style: TextStyle()),

@@ -17,7 +17,7 @@ User user = User();
 
 class ProfileScreen extends StatefulWidget {
   final User user;
-  ProfileScreen({Key? key, required this.user}) : super(key: key);
+  const ProfileScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -196,7 +196,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       buildMode(),
                       buildSetting(),
                     ],
-// Align(alignment: Alignment.topRight, child: buildSetting()),
                   ),
                   buildProfile(),
                 ],
