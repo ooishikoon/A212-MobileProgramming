@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:my_tutor/view/emptycartscreen.dart';
 import '../constants.dart';
 import '../model/user.dart';
 import '../model/cart.dart';
@@ -47,11 +48,15 @@ class _CartScreenState extends State<CartScreen> {
                   fit: BoxFit.cover)),
           child: cartList.isEmpty
               ? Center(
+                  // child: Padding(
+                  //   padding: const EdgeInsets.all(8),
+                  //   child: Text(titlecenter,
+                  //       style: const TextStyle(
+                  //           fontSize: 18, fontWeight: FontWeight.bold)),
+                  // ),
                   child: Padding(
                     padding: const EdgeInsets.all(8),
-                    child: Text(titlecenter,
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    child: EmptyCartScreen(user: widget.user),
                   ),
                 )
               : Padding(
@@ -268,7 +273,8 @@ class _CartScreenState extends State<CartScreen> {
           setState(() {});
         }
       } else {
-        titlecenter = "There are no courses in your cart. ";
+        // titlecenter = "There are no courses in your cart. ";
+        EmptyCartScreen(user: widget.user);
         cartList.clear();
         setState(() {});
       }
