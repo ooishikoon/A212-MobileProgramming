@@ -48,12 +48,6 @@ class _CartScreenState extends State<CartScreen> {
                   fit: BoxFit.cover)),
           child: cartList.isEmpty
               ? Center(
-                  // child: Padding(
-                  //   padding: const EdgeInsets.all(8),
-                  //   child: Text(titlecenter,
-                  //       style: const TextStyle(
-                  //           fontSize: 18, fontWeight: FontWeight.bold)),
-                  // ),
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: EmptyCartScreen(user: widget.user),
