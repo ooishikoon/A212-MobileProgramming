@@ -240,6 +240,7 @@ class _MainScreenState extends State<MainScreen> {
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
                                                 CartScreen(user: widget.user)));
+                                    _loadCourses(1, search);
                                     _loadMyCart();
                                   },
                                   icon: const Icon(
@@ -540,7 +541,9 @@ class _MainScreenState extends State<MainScreen> {
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           title: const Text(
             "Add the course to cart?",
-            style: TextStyle(fontWeight: FontWeight.w600,),
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
           ),
           content: const Text("Are you sure?", style: TextStyle()),
           actions: <Widget>[
