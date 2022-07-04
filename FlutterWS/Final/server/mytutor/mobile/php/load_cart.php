@@ -10,7 +10,6 @@ $sqlloadcart = "SELECT tbl_carts.cart_id, tbl_carts.subject_id, tbl_carts.cart_q
 $result = $conn->query($sqlloadcart);
 $number_of_result = $result->num_rows;
 if ($result->num_rows > 0) {
-    //do something
     $total_payable = 0;
     $carts["cart"] = array();
     while ($rows = $result->fetch_assoc()) {
