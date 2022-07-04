@@ -5,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:my_tutor/model/courses.dart';
 import 'package:my_tutor/model/user.dart';
-import 'package:my_tutor/model/cart.dart';
 import 'package:my_tutor/view/profilescreen.dart';
 import 'package:my_tutor/view/subscribescreen.dart';
 import 'package:my_tutor/view/tutorsscreen.dart';
@@ -582,7 +581,7 @@ class _MainScreenState extends State<MainScreen> {
       const Duration(seconds: 5),
       onTimeout: () {
         return http.Response(
-            'Error', 408); // Request Timeout response status code
+            'Error', 408);
       },
     ).then((response) {
       print(response.body);
@@ -611,7 +610,7 @@ class _MainScreenState extends State<MainScreen> {
       const Duration(seconds: 5),
       onTimeout: () {
         return http.Response(
-            'Error', 408); // Request Timeout response status code
+            'Error', 408);
       },
     ).then((response) {
       print(response.body);
