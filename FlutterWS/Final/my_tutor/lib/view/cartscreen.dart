@@ -204,22 +204,48 @@ class _CartScreenState extends State<CartScreen> {
                                             )));
                                   }))),
                           Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            clipBehavior: Clip.antiAlias,
+                            shadowColor: Colors.amber,
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(255, 193, 188, 214),
+                                    Color.fromARGB(255, 235, 235, 204),
+                                  ],
+                                  begin: Alignment.center,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
-                                    "Total Payable :  RM " +
+                                    "Total Amount :  RM " +
                                         totalpayable.toStringAsFixed(2),
                                     style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   ElevatedButton(
-                                      onPressed: _onPaynowDialog,
-                                      child: const Text("Pay Now"))
+                                    onPressed: _onPaynowDialog,
+                                    child: const Text(
+                                      "Check Out",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: const Color.fromARGB(
+                                          255, 241, 241, 179),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
