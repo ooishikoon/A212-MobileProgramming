@@ -5,8 +5,8 @@ if (!isset($_POST)) {
     die();
 }
 include_once("dbconnect.php");
-$email = $_POST['email'];
-$sqlloadcart = "SELECT tbl_carts.cart_id, tbl_carts.subject_id, tbl_carts.cart_qty, tbl_subjects.subject_name, tbl_subjects.subject_price FROM tbl_carts INNER JOIN tbl_subjects ON tbl_carts.subject_id = tbl_subjects.subject_id WHERE tbl_carts.customer_email = '$email' AND tbl_carts.cart_status IS NULL";
+$email = $_POST['user_email'];
+$sqlloadcart = "SELECT tbl_carts.cart_id, tbl_carts.subject_id, tbl_carts.cart_qty, tbl_subjects.subject_name, tbl_subjects.subject_price FROM tbl_carts INNER JOIN tbl_subjects ON tbl_carts.subject_id = tbl_subjects.subject_id WHERE tbl_carts.user_email = '$email' AND tbl_carts.cart_status IS NULL";
 $result = $conn->query($sqlloadcart);
 $number_of_result = $result->num_rows;
 if ($result->num_rows > 0) {
