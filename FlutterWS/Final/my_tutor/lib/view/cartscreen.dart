@@ -85,21 +85,20 @@ class _CartScreenState extends State<CartScreen> {
                             const Text(
                               "Your cart",
                               style: TextStyle(
-                                fontSize: 25,
+                                fontSize: 28,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
                         ),
-                        Expanded(
-                            child: Column(
+                        Column(
                           children: [
                             const SizedBox(
                               height: 50,
                             ),
                             Text(titlecenter,
                                 style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold)),
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
                             Expanded(
                                 child: GridView.count(
                                     crossAxisCount: 2,
@@ -107,83 +106,109 @@ class _CartScreenState extends State<CartScreen> {
                                     children:
                                         List.generate(cartList.length, (index) {
                                       return InkWell(
+                                          splashColor: Colors.amber,
                                           child: Card(
-                                              child: Column(
-                                        children: [
-                                          Flexible(
-                                            flex: 6,
-                                            child: CachedNetworkImage(
-                                              imageUrl: CONSTANTS.server +
-                                                  "/mytutor/mobile/assets/courses/" +
-                                                  cartList[index]
-                                                      .subjectId
-                                                      .toString() +
-                                                  '.png',
-                                              fit: BoxFit.cover,
-                                              width: resWidth,
-                                              placeholder: (context, url) =>
-                                                  const LinearProgressIndicator(),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      const Icon(Icons.error),
-                                            ),
-                                          ),
-                                          Text(
-                                            cartList[index]
-                                                .subjectName
-                                                .toString(),
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Flexible(
-                                            flex: 3,
-                                            child: Column(children: [
-                                              Column(children: [
-                                                Text(
-                                                  "RM " +
-                                                      double.parse(
-                                                              cartList[index]
-                                                                  .pricetotal
-                                                                  .toString())
-                                                          .toStringAsFixed(2),
-                                                  style: const TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                              clipBehavior: Clip.antiAlias,
+                                              shadowColor: Colors.amber,
+                                              elevation: 8,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15.0),
+                                              ),
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        10, 10, 10, 0),
+                                                decoration: const BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color.fromARGB(
+                                                          255, 247, 242, 199),
+                                                      Color.fromARGB(
+                                                          255, 243, 204, 86)
+                                                    ],
+                                                    begin: Alignment.topLeft,
+                                                    end: Alignment.bottomRight,
+                                                  ),
                                                 ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                child: Column(
                                                   children: [
-                                                    TextButton(
-                                                        onPressed: () {
-                                                          _updateCart(
-                                                              index, "-");
-                                                        },
-                                                        child: const Text("-")),
-                                                    Text(cartList[index]
-                                                        .cartqty
-                                                        .toString()),
-                                                    TextButton(
-                                                        onPressed: () {
-                                                          _updateCart(
-                                                              index, "+");
-                                                        },
-                                                        child: const Text("+")),
-                                                    IconButton(
-                                                        onPressed: () {
-                                                          _deleteItem(index);
-                                                        },
-                                                        icon: const Icon(
-                                                            Icons.delete))
+                                                    Flexible(
+                                                      flex: 5,
+                                                      child: CachedNetworkImage(
+                                                        imageUrl: CONSTANTS
+                                                                .server +
+                                                            "/mytutor/mobile/assets/courses/" +
+                                                            cartList[index]
+                                                                .subjectId
+                                                                .toString() +
+                                                            '.png',
+                                                        fit: BoxFit.cover,
+                                                        width: resWidth,
+                                                        placeholder: (context,
+                                                                url) =>
+                                                            const LinearProgressIndicator(),
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            const Icon(
+                                                                Icons.error),
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Text(
+                                                      cartList[index]
+                                                          .subjectName
+                                                          .toString(),
+                                                      style: const TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Flexible(
+                                                      flex: 3,
+                                                      child: Column(children: [
+                                                        Column(children: [
+                                                          const SizedBox(
+                                                            height: 10,
+                                                          ),
+                                                          Text(
+                                                            "RM " +
+                                                                double.parse(cartList[
+                                                                            index]
+                                                                        .pricetotal
+                                                                        .toString())
+                                                                    .toStringAsFixed(
+                                                                        2),
+                                                            style: const TextStyle(
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              IconButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    _deleteItem(
+                                                                        index);
+                                                                  },
+                                                                  icon: const Icon(
+                                                                      Icons
+                                                                          .delete))
+                                                            ],
+                                                          )
+                                                        ]),
+                                                      ]),
+                                                    )
                                                   ],
-                                                )
-                                              ]),
-                                            ]),
-                                          )
-                                        ],
-                                      )));
+                                                ),
+                                              )));
                                     }))),
                             Card(
                               child: Padding(
@@ -193,7 +218,7 @@ class _CartScreenState extends State<CartScreen> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
-                                      "Total Payable: RM " +
+                                      "Total Payable :  RM " +
                                           totalpayable.toStringAsFixed(2),
                                       style: const TextStyle(
                                           fontSize: 18,
@@ -207,7 +232,7 @@ class _CartScreenState extends State<CartScreen> {
                               ),
                             )
                           ],
-                        )),
+                        )
                       ],
                     ),
                   )));
@@ -220,15 +245,13 @@ class _CartScreenState extends State<CartScreen> {
         }).timeout(
       const Duration(seconds: 5),
       onTimeout: () {
-        return http.Response(
-            'Error', 408); // Request Timeout response status code
+        return http.Response('Error', 408);
       },
     ).timeout(
       const Duration(seconds: 5),
       onTimeout: () {
         titlecenter = "Timeout Please retry again later";
-        return http.Response(
-            'Error', 408); // Request Timeout response status code
+        return http.Response('Error', 408);
       },
     ).then((response) {
       var jsondata = jsonDecode(response.body);
