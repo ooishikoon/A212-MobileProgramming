@@ -268,7 +268,7 @@ class _CartScreenState extends State<CartScreen> {
           setState(() {});
         }
       } else {
-        titlecenter = "Your Cart is Empty 😞 ";
+        titlecenter = "There are no courses in your cart. ";
         cartList.clear();
         setState(() {});
       }
