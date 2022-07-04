@@ -285,7 +285,7 @@ class _MainScreenState extends State<MainScreen> {
                                       gradient: LinearGradient(
                                         colors: [
                                           Color.fromARGB(255, 247, 242, 199),
-                                          Color.fromARGB(255, 243, 204, 86)
+                                          Color.fromARGB(255, 243, 204, 86),
                                         ],
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
