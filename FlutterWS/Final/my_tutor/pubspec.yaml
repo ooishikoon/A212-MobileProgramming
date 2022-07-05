@@ -41,6 +41,7 @@ dependencies:
   toast: ^0.3.0
   intl: ^0.17.0
   get: ^4.6.5
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_lints: ^1.0.0
