@@ -40,15 +40,15 @@ if ($signed === $data['x_signature']) {
         if ($conn->query($sqpupdatecart)){
             $sqlselectcart="SELECT * FROM tbl_carts WHERE payment_id = '$receiptid'";
             $result = $conn->query($sqlselectcart);
-            $message = "Payment completed. Return back to the application by pressing the back button on the app task bar.";
+            $message = "Payment completed. Return back to the application by pressing the back button.";
             $amount = number_format((float)$amount, 2, '.', '');
             printTable($receiptid,$name,$email,$amount,$paidstatus,$message);   
         }else{
-            $message = "Payment incompleted. Return back to the application by pressing the back button on the app task bar and perform the payment again.";
+            $message = "Payment incompleted. Return back to the application by pressing the back button and perform the payment again.";
             printTable('Failed',$name,$email,$amount,$paidstatus,$message);
         }
     }else{
-        $message = "Payment incompleted. Return back to the application by pressing the back button on the app task bar and perform the payment again.";
+        $message = "Payment incompleted. Return back to the application by pressing the back button and perform the payment again.";
         printTable('Failed',$name,$email,$amount,$paidstatus,$message);
     }
 }
