@@ -20,77 +20,60 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
+  // final Completer<WebViewController> _controller =
+  //     Completer<WebViewController>();
+  late WebViewController controller;
+  double progress = 0;
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/paymentscreen.png'),
-                fit: BoxFit.fill),
-          ),
+  Widget build(BuildContext context) => Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {
+            controller.clearCache();
+            CookieManager().clearCookies();
+          },
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-          child: Stack(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  IconButton(
-                    icon: const Icon(
-                      Icons.keyboard_arrow_left,
-                      size: 35,
-                    ),
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (content) =>
-                                  CartScreen(user: widget.user)));
-                    },
-                  ),
-                  const SizedBox(
-                    width: 100,
-                  ),
-                  const Text(
-                    "Payment",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Expanded(
-                    child: WebView(
-                      initialUrl: CONSTANTS.server +
-                          '/mytutor/mobile/php/payment.php?email=' +
-                          widget.user.email.toString() +
-                          '&phoneno=' +
-                          widget.user.phoneno.toString() +
-                          '&name=' +
-                          widget.user.name.toString() +
-                          '&amount=' +
-                          widget.totalpayable.toString(),
-                      javascriptMode: JavascriptMode.unrestricted,
-                      onWebViewCreated: (WebViewController webViewController) {
-                        _controller.complete(webViewController);
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    ));
-  }
+        title: const Text('Payment'),
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () async {
+                if (await controller.canGoBack()) {
+                  controller.goBack();
+                }
+              }),
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () => controller.reload(),
+          )
+        ],
+      ),
+      body: Column(
+        children: <Widget>[
+          LinearProgressIndicator(
+              value: progress,
+              color: Colors.blue,
+              backgroundColor: Colors.amber),
+          Expanded(
+            child: WebView(
+                javascriptMode: JavascriptMode.unrestricted,
+                initialUrl: CONSTANTS.server +
+                    '/mytutor/mobile/php/payment.php?email=' +
+                    widget.user.email.toString() +
+                    '&phoneno=' +
+                    widget.user.phoneno.toString() +
+                    '&name=' +
+                    widget.user.name.toString() +
+                    '&amount=' +
+                    widget.totalpayable.toString(),
+                onWebViewCreated: (controller) {
+                  this.controller = controller;
+                },
+                onProgress: (progress) =>
+                    setState(() => this.progress = progress / 100)),
+          )
+        ],
+      ));
 }
