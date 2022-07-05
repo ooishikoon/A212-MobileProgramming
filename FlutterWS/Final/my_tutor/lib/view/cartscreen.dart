@@ -311,14 +311,16 @@ class _CartScreenState extends State<CartScreen> {
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           title: const Text(
             "Pay Now",
-            style: TextStyle(),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           content: const Text("Are you sure?", style: TextStyle()),
           actions: <Widget>[
             TextButton(
               child: const Text(
                 "Yes",
-                style: TextStyle(),
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
               onPressed: () async {
                 Navigator.of(context).pop();
@@ -326,15 +328,16 @@ class _CartScreenState extends State<CartScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (content) => PaymentScreen(
-                            user: widget.user,
-                            totalpayable: totalpayable)));
+                            user: widget.user, totalpayable: totalpayable)));
                 _loadCart();
               },
             ),
             TextButton(
               child: const Text(
                 "No",
-                style: TextStyle(),
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
               onPressed: () {
                 Navigator.of(context).pop();
