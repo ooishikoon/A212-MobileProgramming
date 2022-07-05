@@ -162,7 +162,7 @@ class _CartScreenState extends State<CartScreen> {
                                                             FontWeight.bold),
                                                   ),
                                                   Flexible(
-                                                    flex: 4,
+                                                    flex: 5,
                                                     child: Column(children: [
                                                       Column(children: [
                                                         const SizedBox(
@@ -294,7 +294,6 @@ class _CartScreenState extends State<CartScreen> {
           setState(() {});
         }
       } else {
-        // titlecenter = "There are no courses in your cart. ";
         EmptyCartScreen(user: widget.user);
         cartList.clear();
         setState(() {});

@@ -20,8 +20,8 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  // final Completer<WebViewController> _controller =
-  //     Completer<WebViewController>();
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(10, 30, 0, 10),
+          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Stack(
             children: <Widget>[
               Row(
@@ -64,6 +64,27 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
+                ],
+              ),
+              Column(
+                children: [
+                  Expanded(
+                    child: WebView(
+                      initialUrl: CONSTANTS.server +
+                          '/mytutor/mobile/php/payment.php?email=' +
+                          widget.user.email.toString() +
+                          '&phoneno=' +
+                          widget.user.phoneno.toString() +
+                          '&name=' +
+                          widget.user.name.toString() +
+                          '&amount=' +
+                          widget.totalpayable.toString(),
+                      javascriptMode: JavascriptMode.unrestricted,
+                      onWebViewCreated: (WebViewController webViewController) {
+                        _controller.complete(webViewController);
+                      },
+                    ),
+                  )
                 ],
               ),
             ],
