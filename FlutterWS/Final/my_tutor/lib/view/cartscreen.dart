@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_tutor/view/emptycartscreen.dart';
+import 'package:my_tutor/view/paymentscreen.dart';
 import '../constants.dart';
 import '../model/user.dart';
 import '../model/cart.dart';
@@ -302,47 +303,47 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   void _onPaynowDialog() {
-    // showDialog(
-    //   context: context,
-    //   builder: (BuildContext context) {
-    //     return AlertDialog(
-    //       shape: const RoundedRectangleBorder(
-    //           borderRadius: BorderRadius.all(Radius.circular(20.0))),
-    //       title: const Text(
-    //         "Pay Now",
-    //         style: TextStyle(),
-    //       ),
-    //       content: const Text("Are you sure?", style: TextStyle()),
-    //       actions: <Widget>[
-    //         TextButton(
-    //           child: const Text(
-    //             "Yes",
-    //             style: TextStyle(),
-    //           ),
-    //           onPressed: () async {
-    //             Navigator.of(context).pop();
-    //             await Navigator.push(
-    //                 context,
-    //                 MaterialPageRoute(
-    //                     builder: (content) => PaymentScreen(
-    //                         customer: widget.customer,
-    //                         totalpayable: totalpayable)));
-    //             _loadCart();
-    //           },
-    //         ),
-    //         TextButton(
-    //           child: const Text(
-    //             "No",
-    //             style: TextStyle(),
-    //           ),
-    //           onPressed: () {
-    //             Navigator.of(context).pop();
-    //           },
-    //         ),
-    //       ],
-    //     );
-    //   },
-    // );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          title: const Text(
+            "Pay Now",
+            style: TextStyle(),
+          ),
+          content: const Text("Are you sure?", style: TextStyle()),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                "Yes",
+                style: TextStyle(),
+              ),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (content) => PaymentScreen(
+                            user: widget.user,
+                            totalpayable: totalpayable)));
+                _loadCart();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                "No",
+                style: TextStyle(),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _deleteItem(int index) {
